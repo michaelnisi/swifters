@@ -19,19 +19,17 @@ Creating adaptive UIs collection views and table views can be used to structure 
 
 ## Objectives
 
-Explore building a modern application using GraphQL and UICollectionView using rich data sources. If possible, code generate the model graph. Try pagination using `UICollectionViewDataSourcePrefetching`.
+- Explore GraphQL building a modern application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview). 
+- Compare the imperative and procedural REST approach to the declarative GraphQL.
+- Try pagination using [UICollectionViewDataSourcePrefetching](https://developer.apple.com/documentation/uikit/uicollectionviewdatasourceprefetching).
 
 ## Dependencies
-
-I’m convinced, only dependencies we are willing to contribute, even to fork, are responsible to take. We have to own them, at least we must consider the possibility. 💥 The sound of an eye-rolling JavaScript engineer keeling over.
 
 - 🕸 [Apollo](https://github.com/apollographql/apollo-ios), Caching GraphQL client for iOS
 - 🖼 [Nuke](https://github.com/kean/Nuke), Image loading and caching
 - 🔗 [Ola](https://github.com/michaelnisi/ola), Check reachability of host
 
 #### Apollo
-
-With no prior experience with GraphQL or Apollo, this little project offers a welcome opportunity for trying both. At least for a couple of hours, I still believe in [REST](https://en.wikipedia.org/wiki/Representational_state_transfer), kind of. Not one to take dependencies lightly, I’m especially sceptical regarding Apollo. It seems to be doing a bit much, replacing access and model layer at once.
 
 Apollo requires [Node.js](https://nodejs.org) 8.x or newer. And it’s using [npx](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner), which is neat. It lets you execute commands locally, or from a central cache, installing any packages needed.
 
@@ -45,19 +43,17 @@ And with that, I’ve just downloaded the 45K LOC schema file of the GitHub Grap
 
 #### Diffing
 
-All iOS developers have implemented a diffing algorithm for updating collection views or table views, one way or another. Looking around, I found [DeepDiff](https://github.com/onmyway133/DeepDiff) and extracted the diffing into a single 386 LOC [file](./Swifters/ds/diff.swift).
+Every iOS developer has implemented a diffing algorithm for updating collection views or table views, one way or another. Looking around, I found [DeepDiff](https://github.com/onmyway133/DeepDiff) and extracted the diffing into a single 386 LOC [file](./Swifters/ds/diff.swift).
 
 I’m excited about the recent [Ordered Collection Diffing](https://github.com/apple/swift-evolution/blob/master/proposals/0240-ordered-collection-diffing.md) proposal, describing additions to the Swift standard library that provide an interchange format for diffs as well as diffing/patching functionality for appropriate collection types.
 
 ## Evaluating GraphQL/Apollo
 
-Reading the Apollo documentation, my main concern with Apollo’s approach is the tight coupling between view controllers and remote API, merging access and storage. On the other hand, [repositories](https://www.martinfowler.com/eaaCatalog/repository.html) have the same surface and its purpose is removing the serialization layer, which can be a millstone around the neck of developers, rendering them hesitant to change. Propagating an adjustment from the server onto the screen is often laborious.
+Reading the Apollo documentation, my main concern with Apollo’s approach is the tight coupling between view controllers and the remote API, merging access and storage. On the other hand, [repositories](https://www.martinfowler.com/eaaCatalog/repository.html) have the same surface and its purpose is removing the serialization layer, which can be a millstone around the neck of developers, rendering them hesitant to change. Propagating an adjustment from the server onto the screen is often laborious and often requires coordination between different teams.
 
-But the service logic leaks into your view controllers. Is that modern? Maybe. The schema.json is a contract. I have to read up on GraphQL API versioning.
+But the service logic leaks into your view controllers. Is that modern? Maybe. The `schema.json` is a contract. I have to read up on GraphQL API versioning.
 
-While being at it, Apollo does not only remove serialization, but also builds a local graph, which may be used for replacing the so called model layer as well.
-
-I decided to go all in for this little experiment and query from my collection view data sources, which accompanies nicely the other dogma I set for this: collection views only.
+Apollo does not only remove serialization, but also builds a local graph. I decided to go all in for this little experiment and query from my collection view data sources, which accompanies nicely my other dogma for this demo: collection views only.
 
 ## Conclusion
 
@@ -69,6 +65,7 @@ A week later, do I still believe in REST? I haven’t experienced implementing a
 
 - Offline first? How would we persist the graph cache?
 - How does memory management of the graph work?
+- Why is `GraphQLFragment` not `Hashable`?
 
 ## Installation
 
