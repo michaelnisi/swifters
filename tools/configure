@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -o xtrace
+
+SOURCE="${BASH_SOURCE[0]}"
+if [[ -h $SOURCE ]]; then
+  SOURCE="$( readlink "$SOURCE" )"
+fi
+
+SOURCE_ROOT="${SOURCE_ROOT:-$( cd -P "$( dirname "$SOURCE" )/.." && pwd )}"
+
+config() {
+  local in="$SOURCE_ROOT/config.json.in"
+  local out="$SOURCE_ROOT/Swifters/config.json"
+  sed \
+    -e "s;@@GITHUB_TOKEN@@;$GITHUB_TOKEN;g" \
+    $in > $out
+}
+
+populate() {
+  config
+}
+
+populate
+
+exit 0

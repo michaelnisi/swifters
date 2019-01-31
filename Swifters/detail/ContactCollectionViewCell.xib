@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContactCollectionViewCellID" id="gTV-IL-0wX" customClass="ContactCollectionViewCell" customModule="Swifters" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="316" height="164"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="316" height="164"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-nS-rQZ">
+                        <rect key="frame" x="20" y="32" width="276" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" name="Gray"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGi-hB-pp2">
+                        <rect key="frame" x="148" y="88" width="20" height="18"/>
+                        <state key="normal" image="Mail"/>
+                        <connections>
+                            <action selector="mailButtonTouchUpInside:" destination="gTV-IL-0wX" eventType="touchUpInside" id="7UG-HS-TrR"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pQV-nS-rQZ" secondAttribute="trailing" constant="20" id="Ayp-PM-fH3"/>
+                <constraint firstItem="vGi-hB-pp2" firstAttribute="top" secondItem="pQV-nS-rQZ" secondAttribute="bottom" constant="32" id="QmZ-Ec-nRk"/>
+                <constraint firstItem="pQV-nS-rQZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="TdZ-7I-QTj"/>
+                <constraint firstItem="vGi-hB-pp2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tY3-HB-UOl"/>
+                <constraint firstItem="pQV-nS-rQZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="32" id="vHK-V3-cdN"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="316" height="164"/>
+            <connections>
+                <outlet property="bodyLabel" destination="pQV-nS-rQZ" id="63G-WR-1mr"/>
+                <outlet property="mailButton" destination="vGi-hB-pp2" id="2Y3-fv-PVb"/>
+            </connections>
+            <point key="canvasLocation" x="353.60000000000002" y="205.99700149925039"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Mail" width="20" height="16"/>
+        <namedColor name="Gray">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

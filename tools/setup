@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -o xtrace
+
+SOURCE="${BASH_SOURCE[0]}"
+if [[ -h $SOURCE ]]; then
+  SOURCE="$( readlink "$SOURCE" )"
+fi
+
+DIR="$( cd -P "$( dirname "$SOURCE" )/../.." && pwd )"
+
+DEPS=(apollographql/apollo-ios kean/Nuke michaelnisi/ola)
+
+clone() {
+  local host=https://github.com
+
+  cd $DIR
+  for var in "${DEPS[@]}"
+  do
+    git clone "$host/${var}"
+  done
+}
+
+main() {
+  clone
+}
+
+main

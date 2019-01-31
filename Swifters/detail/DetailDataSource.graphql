@@ -1,0 +1,19 @@
+fragment UserDetail on User {
+  id
+  avatarUrl
+  createdAt
+  name
+  bio
+  email
+  url
+  followers {
+    totalCount
+  }
+}
+
+query UserNode($id: ID!) {
+  node(id: $id) {
+    ... UserDetail
+  }
+}
+

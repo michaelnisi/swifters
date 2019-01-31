@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailUserCollectionViewCellID" id="gTV-IL-0wX" customClass="DetailUserCollectionViewCell" customModule="Swifters" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="266" height="256"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="266" height="256"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wkf-6T-16U">
+                        <rect key="frame" x="0.0" y="0.0" width="266" height="256"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                    </imageView>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Jd-Tb-6S0">
+                        <rect key="frame" x="0.0" y="192" width="266" height="64"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nyd-Xd-T1h">
+                            <rect key="frame" x="0.0" y="0.0" width="266" height="64"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="p9h-V7-qHM">
+                                    <rect key="frame" x="80" y="10" width="186" height="44"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdl-aX-U4a">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="26"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svy-sG-zBh">
+                                            <rect key="frame" x="0.0" y="18" width="186" height="26"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Octo" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-CN-JYt">
+                                    <rect key="frame" x="20" y="10" width="44" height="44"/>
+                                    <gestureRecognizers/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="Xaf-k1-Gjx"/>
+                                        <constraint firstAttribute="width" constant="44" id="pus-yz-Bbs"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="RqM-CN-JYt" firstAttribute="bottom" secondItem="p9h-V7-qHM" secondAttribute="bottom" id="761-4d-ZN2"/>
+                                <constraint firstItem="p9h-V7-qHM" firstAttribute="leading" secondItem="RqM-CN-JYt" secondAttribute="trailing" constant="16" id="H8R-aP-cha"/>
+                                <constraint firstItem="RqM-CN-JYt" firstAttribute="leading" secondItem="nyd-Xd-T1h" secondAttribute="leading" constant="20" symbolic="YES" id="UW6-nt-pkp"/>
+                                <constraint firstItem="p9h-V7-qHM" firstAttribute="top" secondItem="RqM-CN-JYt" secondAttribute="top" id="bgs-tl-QCk"/>
+                                <constraint firstItem="RqM-CN-JYt" firstAttribute="centerY" secondItem="nyd-Xd-T1h" secondAttribute="centerY" id="iQk-TH-BAG"/>
+                                <constraint firstAttribute="trailing" secondItem="p9h-V7-qHM" secondAttribute="trailing" id="snv-qu-ohg"/>
+                            </constraints>
+                        </view>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="64" id="GUX-XS-Faz"/>
+                        </constraints>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fp-lj-VoZ">
+                        <rect key="frame" x="0.0" y="192" width="266" height="64"/>
+                        <connections>
+                            <action selector="sleeveTouchUpInside:" destination="gTV-IL-0wX" eventType="touchUpInside" id="PPX-p8-t8b"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9Jd-Tb-6S0" secondAttribute="bottom" id="1kM-IK-DRn"/>
+                <constraint firstAttribute="trailing" secondItem="Wkf-6T-16U" secondAttribute="trailing" id="7Kk-oJ-pC9"/>
+                <constraint firstItem="Wkf-6T-16U" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="H4Q-d9-LND"/>
+                <constraint firstItem="Wkf-6T-16U" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="N2n-4S-4eb"/>
+                <constraint firstItem="6Fp-lj-VoZ" firstAttribute="top" secondItem="9Jd-Tb-6S0" secondAttribute="top" id="Uhf-3p-6Ou"/>
+                <constraint firstItem="6Fp-lj-VoZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZJb-ik-Zdh"/>
+                <constraint firstItem="9Jd-Tb-6S0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aFM-ri-WvD"/>
+                <constraint firstAttribute="trailing" secondItem="6Fp-lj-VoZ" secondAttribute="trailing" id="pue-Ei-ePs"/>
+                <constraint firstAttribute="trailing" secondItem="9Jd-Tb-6S0" secondAttribute="trailing" id="uNQ-ib-ZRb"/>
+                <constraint firstAttribute="bottom" secondItem="6Fp-lj-VoZ" secondAttribute="bottom" id="uxj-Xh-LyU"/>
+                <constraint firstAttribute="bottom" secondItem="Wkf-6T-16U" secondAttribute="bottom" id="zQ9-wi-MOt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="266" height="256"/>
+            <connections>
+                <outlet property="heroImageBottom" destination="zQ9-wi-MOt" id="vZG-7Z-xpH"/>
+                <outlet property="heroImageLeading" destination="H4Q-d9-LND" id="Jgt-SP-uVL"/>
+                <outlet property="heroImageTop" destination="N2n-4S-4eb" id="gH8-eP-IaG"/>
+                <outlet property="heroImageTrailing" destination="7Kk-oJ-pC9" id="IaP-Rd-PTg"/>
+                <outlet property="heroImageView" destination="Wkf-6T-16U" id="1CH-qw-uEb"/>
+                <outlet property="subtitleLabel" destination="svy-sG-zBh" id="Hfl-oF-uSH"/>
+                <outlet property="titleLabel" destination="Jdl-aX-U4a" id="YAr-tb-0Uu"/>
+            </connections>
+            <point key="canvasLocation" x="310.39999999999998" y="247.37631184407797"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Octo" width="120" height="120"/>
+    </resources>
+</document>

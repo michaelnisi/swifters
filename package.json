@@ -1,0 +1,26 @@
+{
+  "name": "Swifters",
+  "version": "1.0.0",
+  "description": "The Swifters iOS app lets you browse Swift users on GitHub.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "apollo": "^1.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelnisi/swifters.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelnisi/swiftes/issues"
+  },
+  "homepage": "https://github.com/michaelnisi/swifters#readme"
+}

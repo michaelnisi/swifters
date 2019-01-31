@@ -1,0 +1,18 @@
+fragment SearchResultUser on User {
+  id
+  avatarUrl
+  createdAt
+  name
+}
+
+query UserSearch($queryString: String!, $cursor: String) {
+  search(query: $queryString, type: USER, first: 10, after: $cursor) {
+    userCount
+    edges {
+      cursor
+      node {
+        ... SearchResultUser
+      }
+    }
+  }
+}
