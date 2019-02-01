@@ -51,12 +51,128 @@ private struct FetchingState {
 
 final class UserListDataSource: DataSource {
 
+  static var messageCollectionViewCellID = "MessageCollectionViewCellID"
+  static var userCollectionViewCellID = "UserCollectionViewCellID"
+
+  /// Registers all cell nib files for `collectionView`.
+  static func registerCellClasses(_ collectionView: UICollectionView) {
+    collectionView.register(
+      UINib(nibName: "UserCollectionViewCell", bundle: .main),
+      forCellWithReuseIdentifier: userCollectionViewCellID
+    )
+
+    collectionView.register(
+      UINib(nibName: "MessageCollectionViewCell", bundle: .main),
+      forCellWithReuseIdentifier: messageCollectionViewCellID
+    )
+  }
+
+  /// Enumerates item types provided by this data source.
+  enum Item: Hashable {
+
+    /// A search result user and its cursor.
+    case user(SearchResultUser, String)
+    
+    /// A simple message string to display.
+    case message(String)
+
+    static func == (lhs: Item, rhs: Item) -> Bool {
+      switch (lhs, rhs) {
+      case (.user(let a, _), .user(let b, _)):
+        return a.id == b.id
+      case (.message(let a), .message(let b)):
+        return a == b
+      case (.message, _), (.user, _):
+        return false
+      }
+    }
+
+    public var hashValue: Int {
+      switch self {
+      case .message(let string):
+        return string.hashValue
+      case .user(let user, _):
+        return user.id.hashValue
+      }
+    }
+
+  }
+
+  var sections: [[Item]]
+
+  init(sections: [[Item]] = [[.message("We ❤️ Swift")]]) {
+    self.sections = sections
+  }
+
+  /// Creates a new data source, prepopulated with `message`.
+  init(message string: String) {
+    self.sections = [[.message(string)]]
+  }
+
   /// The current fetching state.
   private var state = FetchingState()
 
 }
 
-// MARK: Prefetching Items
+// MARK: - SwiftersDataSource
+
+extension UserListDataSource: SwiftersDataSource {}
+
+// MARK: - UICollectionViewDataSource
+
+extension UserListDataSource: UICollectionViewDataSource {
+
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return sections.count
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
+    return sections[section].count
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
+    let item = itemAt(indexPath: indexPath)!
+
+    switch item {
+    case .user(let user, _):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: UserListDataSource.userCollectionViewCellID,
+        for: indexPath) as! UserCollectionViewCell
+
+      cell.layer.cornerRadius = 16
+      cell.layer.masksToBounds = true
+
+      cell.titleLabel.text = user.name
+
+      // Only interested in the year, we are taking a shortcut.
+      cell.captionLabel.text = String(user.createdAt.prefix(4))
+
+      Images.shared.cancel(displaying: cell.avatarImageView)
+      cell.avatarImageView.image = nil
+      Images.shared.load(imageUrl: user.avatarUrl, view: cell.avatarImageView)
+
+      return cell
+
+    case .message(let string):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: UserListDataSource.messageCollectionViewCellID,
+        for: indexPath) as! MessageCollectionViewCell
+
+      cell.titleLabel.text = string
+
+      return cell
+    }
+  }
+
+}
+
+// MARK: - Prefetching Items
 
 extension UserListDataSource {
 
@@ -68,7 +184,7 @@ extension UserListDataSource {
       return false
     }
 
-    return dataSourceItem(matching: indexPath) == last
+    return itemAt(indexPath: indexPath) == last
   }
 
   /// Is `true` if this data source can be assumed to be empty.
@@ -105,7 +221,7 @@ extension UserListDataSource {
       }.isEmpty
 
     guard !shouldNotFetch,
-      case .user(_, let cursor) = dataSourceItem(matching:
+      case .user(_, let cursor)? = itemAt(indexPath:
         indexPathsToPreload.first!) else {
       return nil
     }
@@ -115,7 +231,7 @@ extension UserListDataSource {
 
   func searchUsers(
     indexPaths: [IndexPath]? = nil,
-    completionBlock: (([[DataSourceItem]]) -> Void)? = nil
+    completionBlock: (([[Item]]) -> Void)? = nil
   ) {
     precondition(!isInvalid)
 
@@ -175,7 +291,7 @@ extension UserListDataSource {
           }
         }
 
-        let msg = DataSource.makeMessage(error: er)
+        let msg = GitHub.makeMessage(error: er)
 
         completionBlock?([[.message(msg)]])
         return
@@ -193,7 +309,7 @@ extension UserListDataSource {
           continue
         }
 
-        let user: DataSourceItem = .user(searchResultUser, e.cursor)
+        let user: Item = .user(searchResultUser, e.cursor)
         
         guard !users.contains(user) else {
           continue

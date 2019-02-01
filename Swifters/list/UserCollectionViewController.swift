@@ -14,21 +14,6 @@ final class UserCollectionViewController: UICollectionViewController {
 
   private var dataSource = UserListDataSource()
 
-  private static func makeSectionInset(collectionView: UICollectionView) -> UIEdgeInsets {
-    let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-    let o = layout.sectionInset
-
-    guard collectionView.traitCollection.containsTraits(in:
-      UITraitCollection(traitsFrom: [
-      UITraitCollection(horizontalSizeClass: .regular),
-      UITraitCollection(verticalSizeClass: .regular)
-    ])) else {
-      return o
-    }
-
-    return UIEdgeInsets(top: o.top, left: 24, bottom: o.bottom, right: 24)
-  }
-
   /// Updates and may load more than 10 items, making sure sure we have enough
   /// items to fill the view. On iPad, 10 may not be enough, we are prefetching
   /// based on visible items.
@@ -60,22 +45,17 @@ final class UserCollectionViewController: UICollectionViewController {
       fatalError("collectionView expected")
     }
 
-    DataSource.registerCellClasses(cv)
+    UserListDataSource.registerCellClasses(cv)
     
-    // Do any additional setup after loading the view.
-
     navigationItem.title = "Swifters"
     navigationItem.largeTitleDisplayMode = .automatic
 
-    let layout = cv.collectionViewLayout as! UICollectionViewFlowLayout
-    layout.minimumInteritemSpacing = 20
-    layout.minimumLineSpacing = 30
-    layout.sectionInset = UserCollectionViewController.makeSectionInset(collectionView: cv)
-
     cv.dataSource = dataSource
     cv.prefetchDataSource = self
+    cv.collectionViewLayout = ListLayout()
 
     let rc = UIRefreshControl()
+    
     rc.addTarget(self, action: #selector(refreshControlValueChanged), for: .valueChanged)
     cv.refreshControl = rc
   }
@@ -91,23 +71,6 @@ final class UserCollectionViewController: UICollectionViewController {
     dataSource.invalidateProbe()
   }
 
-  /// Invalidates the data source.
-  ///
-  /// This illustrates nicely, how having two references, `dataSource` and
-  /// `collectionView.dataSource`, for the *same* thing are a terrible idea.
-  func invalidateDataSource() {
-    let cv = collectionView!
-
-    dataSource.invalidate()
-
-    let newDataSource = UserListDataSource(message: "Swipe down to refresh.")
-
-    cv.dataSource = newDataSource
-    dataSource = newDataSource
-
-    cv.performBatchUpdates({ cv.reloadSections([0]) }) { ok in assert(ok) }
-  }
-
   /// Fetches users if the data source hasn’t been initially populated with
   /// users or if `indexPaths` references its last item.
   @discardableResult
@@ -121,31 +84,10 @@ final class UserCollectionViewController: UICollectionViewController {
     }
 
     let cv = collectionView!
+    let ds = dataSource
 
     dataSource.searchUsers(indexPaths: indexPaths) { sections in
-      cv.performBatchUpdates({
-        // Index out of range intentionally traps here!
-        let old = self.dataSource.sections[0]
-        let changes = diff(old: old, new: sections[0])
-
-        self.dataSource.sections = sections
-
-        for change in changes {
-          switch change {
-          case .insert(let change):
-            let ip = IndexPath(row: change.index, section: 0)
-            cv.insertItems(at: [ip])
-          case .delete(let change):
-            let ip = IndexPath(row: change.index, section: 0)
-            cv.deleteItems(at: [ip])
-          case .replace, .move:
-            fatalError("not implemented yet")
-          }
-        }
-      }) { ok in
-        assert((ok))
-        completionBlock?()
-      }
+      ds.commit(sections: sections, updating: cv)
     }
 
     return true
@@ -154,19 +96,18 @@ final class UserCollectionViewController: UICollectionViewController {
   override func collectionView(
     _ collectionView: UICollectionView,
     shouldSelectItemAt indexPath: IndexPath) -> Bool {
-    switch dataSource.dataSourceItem(matching: indexPath) {
-    case .user:
-      return true
-    case .detail, .message, .contact:
+    guard case .user? = dataSource.itemAt(indexPath: indexPath) else {
       return false
     }
+
+    return true
   }
 
   override func collectionView(
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath
   ) {
-    let item = dataSource.dataSourceItem(matching: indexPath)
+    let item = dataSource.itemAt(indexPath: indexPath)!
 
     guard case .user = item,
       let vc = storyboard?.instantiateViewController(
@@ -207,13 +148,11 @@ extension UserCollectionViewController: UICollectionViewDataSourcePrefetching {
 
   private func makeAvatarUrls(indexPaths: [IndexPath]) -> [String] {
     return indexPaths.compactMap {
-      let item = dataSource.dataSourceItem(matching: $0)
-      switch item {
-      case .user(let user, _):
-        return user.avatarUrl
-      case .contact, .detail, .message:
+      guard case .user(let user, _)? = dataSource.itemAt(indexPath: $0) else {
         return nil
       }
+
+      return user.avatarUrl
     }
   }
   
@@ -236,23 +175,4 @@ extension UserCollectionViewController: UICollectionViewDataSourcePrefetching {
     let avatarUrls = makeAvatarUrls(indexPaths: indexPaths)
     Images.shared.cancelPreloading(imageUrls: avatarUrls)
   }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension UserCollectionViewController: UICollectionViewDelegateFlowLayout {
-
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    sizeForItemAt indexPath: IndexPath
-  ) -> CGSize {
-    return Layout.makeItemSize(
-      dataSource: dataSource,
-      collectionView: collectionView,
-      layout: collectionViewLayout,
-      sizeForItemAt: indexPath
-    )
-  }
-
 }

@@ -14,9 +14,9 @@ class DetailCollectionViewController: UICollectionViewController {
 
   private var dataSource = DetailDataSource(sections: [[.message("Loading…")]])
 
-  var item: DataSourceItem!
+  var item: UserListDataSource.Item!
 
-  func update(using item: DataSourceItem) {
+  func update(using item: UserListDataSource.Item) {
     // Setting our title before we’re getting pushed.
     if case .user(let user, _) = item {
       title = user.name
@@ -29,30 +29,10 @@ class DetailCollectionViewController: UICollectionViewController {
     super.viewDidAppear(animated)
 
     let cv = collectionView!
+    let ds = dataSource
 
     dataSource.update(using: item) { sections in
-      cv.performBatchUpdates({
-        // Index out of range intentionally traps here!
-        let old = self.dataSource.sections[0]
-        let changes = diff(old: old, new: sections[0])
-
-        self.dataSource.sections = sections
-
-        for change in changes {
-          switch change {
-          case .insert(let change):
-            let ip = IndexPath(row: change.index, section: 0)
-            cv.insertItems(at: [ip])
-          case .delete(let change):
-            let ip = IndexPath(row: change.index, section: 0)
-            cv.deleteItems(at: [ip])
-          case .replace, .move:
-            fatalError("not implemented yet")
-          }
-        }
-      }) { ok in
-        assert((ok))
-      }
+      ds.commit(sections: sections, updating: cv)
     }
   }
 
@@ -65,12 +45,9 @@ class DetailCollectionViewController: UICollectionViewController {
       fatalError("collectionView expected")
     }
 
-    DataSource.registerCellClasses(cv)
+    DetailDataSource.registerCellClasses(cv)
 
-    let layout = cv.collectionViewLayout as! UICollectionViewFlowLayout
-    layout.minimumInteritemSpacing = 0
-    layout.minimumLineSpacing = 0
-
+    cv.collectionViewLayout = DetailLayout()
     cv.dataSource = dataSource
   }
 
@@ -90,25 +67,6 @@ class DetailCollectionViewController: UICollectionViewController {
     originalNavigationBarHeight = navigationController?
       .navigationBar.bounds.height
   }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
-
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    sizeForItemAt indexPath: IndexPath
-  ) -> CGSize {
-    return Layout.makeItemSize(
-      dataSource: dataSource,
-      collectionView: collectionView,
-      layout: collectionViewLayout,
-      sizeForItemAt: indexPath
-    )
-  }
-
 }
 
 // MARK: - UIScrollViewDelegate
