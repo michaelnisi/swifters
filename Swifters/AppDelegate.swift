@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-private let log = OSLog(subsystem: "ink.codes.swifter", category: "app")
+private let log = OSLog(subsystem: "ink.codes.swifters", category: "app")
 
 struct Configuration: Codable {
   let token: String
