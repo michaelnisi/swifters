@@ -56,15 +56,17 @@ final class UserListDataSource: Reachability {
 
   /// Registers all cell nib files for `collectionView`.
   static func registerCellClasses(_ collectionView: UICollectionView) {
-    collectionView.register(
-      UINib(nibName: "UserCollectionViewCell", bundle: .main),
-      forCellWithReuseIdentifier: userCollectionViewCellID
-    )
+    let cells = [
+      ("UserCollectionViewCell", userCollectionViewCellID),
+      ("MessageCollectionViewCell", messageCollectionViewCellID)
+    ]
 
-    collectionView.register(
-      UINib(nibName: "MessageCollectionViewCell", bundle: .main),
-      forCellWithReuseIdentifier: messageCollectionViewCellID
-    )
+    for cell in cells {
+      collectionView.register(
+        UINib(nibName: cell.0, bundle: .main),
+        forCellWithReuseIdentifier: cell.1
+      )
+    }
   }
 
   /// Enumerates item types provided by this data source.

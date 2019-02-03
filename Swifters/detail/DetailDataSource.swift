@@ -20,20 +20,18 @@ final class DetailDataSource: Reachability {
 
   /// Registers all cell nib files for `collectionView`.
   static func registerCellClasses(_ collectionView: UICollectionView) {
-    collectionView.register(
-      UINib(nibName: "ContactCollectionViewCell", bundle: .main),
-      forCellWithReuseIdentifier: contactCollectionViewCellID
-    )
+    let cells = [
+      ("ContactCollectionViewCell", contactCollectionViewCellID),
+      ("MessageCollectionViewCell", messageCollectionViewCellID),
+      ("DetailUserCollectionViewCell", detailUserCollectionViewCellID)
+    ]
 
-    collectionView.register(
-      UINib(nibName: "MessageCollectionViewCell", bundle: .main),
-      forCellWithReuseIdentifier: messageCollectionViewCellID
-    )
-
-    collectionView.register(
-      UINib(nibName: "DetailUserCollectionViewCell", bundle: .main),
-      forCellWithReuseIdentifier: detailUserCollectionViewCellID
-    )
+    for cell in cells {
+      collectionView.register(
+        UINib(nibName: cell.0, bundle: .main),
+        forCellWithReuseIdentifier: cell.1
+      )
+    }
   }
 
   enum Item: Hashable {
