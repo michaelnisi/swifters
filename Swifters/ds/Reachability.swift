@@ -1,5 +1,5 @@
 //
-//  DataSource.swift
+//  Reachability.swift
 //  Swifters
 //
 //  Created by Michael Nisi on 07.12.18.
@@ -10,8 +10,8 @@ import UIKit
 import Ola
 import os.log
 
-/// A super class for collection view data sources.
-class DataSource: NSObject {
+/// Checks online status.
+class Reachability: NSObject {
 
   private var probe: Ola? {
     willSet {
@@ -36,7 +36,7 @@ class DataSource: NSObject {
 
 // MARK: - Checking Reachability
 
-extension DataSource {
+extension Reachability {
 
   func checkReachability(log: OSLog, retryBlock: @escaping () -> Void) {
     DispatchQueue.global().async {

@@ -12,7 +12,7 @@ import Ola
 
 private let log = OSLog(subsystem: "ink.codes.swifters", category: "detail")
 
-final class DetailDataSource: DataSource {
+final class DetailDataSource: Reachability {
 
   static var messageCollectionViewCellID = "MessageCollectionViewCellID"
   static var contactCollectionViewCellID = "ContactCollectionViewCellID"
@@ -91,7 +91,7 @@ final class DetailDataSource: DataSource {
 
 // MARK: - SwiftersDataSource
 
-extension DetailDataSource: SwiftersDataSource {}
+extension DetailDataSource: SectionedItems {}
 
 // MARK: - UICollectionViewDataSource
 

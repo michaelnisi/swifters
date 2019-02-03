@@ -13,7 +13,7 @@
 		4C45346B21B972B700A44DA9 /* ContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C45346921B972B700A44DA9 /* ContactCollectionViewCell.xib */; };
 		4C45346E21B984B600A44DA9 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45346C21B984B600A44DA9 /* MessageCollectionViewCell.swift */; };
 		4C45346F21B984B600A44DA9 /* MessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C45346D21B984B600A44DA9 /* MessageCollectionViewCell.xib */; };
-		4C4FB0A0220353A6004022E1 /* SwiftersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09F220353A6004022E1 /* SwiftersDataSource.swift */; };
+		4C4FB0A0220353A6004022E1 /* SectionedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09F220353A6004022E1 /* SectionedItems.swift */; };
 		4C7ED7DE21B807B3000E5727 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7ED7DD21B807B3000E5727 /* API.swift */; };
 		4C7ED7E121B82FA5000E5727 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C94DEFA21B7B1AC005AE972 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C94DEF821B7A1D9005AE972 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94DEF721B7A1D9005AE972 /* GitHub.swift */; };
@@ -21,7 +21,7 @@
 		4CBA5FB221BA4810006E286F /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FB121BA4810006E286F /* Images.swift */; };
 		4CBA5FB721BA798A006E286F /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA5FB621BA798A006E286F /* config.json */; };
 		4CBA5FB921BA87E7006E286F /* diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FB821BA87E7006E286F /* diff.swift */; };
-		4CBA5FBB21BAC0C3006E286F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FBA21BAC0C3006E286F /* DataSource.swift */; };
+		4CBA5FBB21BAC0C3006E286F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FBA21BAC0C3006E286F /* Reachability.swift */; };
 		4CD8B0D621BBDF6F00AE5C03 /* Ola.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD8B0D421BBDCA800AE5C03 /* Ola.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CDB1CAB21B68F0F004DB779 /* UserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CAA21B68F0F004DB779 /* UserCollectionViewController.swift */; };
 		4CDB1CAD21B68FB4004DB779 /* UserListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CAC21B68FB4004DB779 /* UserListDataSource.swift */; };
@@ -60,7 +60,7 @@
 		4C45346921B972B700A44DA9 /* ContactCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C45346C21B984B600A44DA9 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C45346D21B984B600A44DA9 /* MessageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionViewCell.xib; sourceTree = "<group>"; };
-		4C4FB09F220353A6004022E1 /* SwiftersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftersDataSource.swift; sourceTree = "<group>"; };
+		4C4FB09F220353A6004022E1 /* SectionedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedItems.swift; sourceTree = "<group>"; };
 		4C7ED7DD21B807B3000E5727 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4C94DEF721B7A1D9005AE972 /* GitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHub.swift; sourceTree = "<group>"; };
 		4C94DEFA21B7B1AC005AE972 /* Apollo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Apollo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +70,7 @@
 		4CBA5FB121BA4810006E286F /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		4CBA5FB621BA798A006E286F /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		4CBA5FB821BA87E7006E286F /* diff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = diff.swift; sourceTree = "<group>"; };
-		4CBA5FBA21BAC0C3006E286F /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		4CBA5FBA21BAC0C3006E286F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4CD8B0D421BBDCA800AE5C03 /* Ola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDB1CAA21B68F0F004DB779 /* UserCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewController.swift; sourceTree = "<group>"; };
 		4CDB1CAC21B68FB4004DB779 /* UserListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListDataSource.swift; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				4CBA5FB821BA87E7006E286F /* diff.swift */,
-				4CBA5FBA21BAC0C3006E286F /* DataSource.swift */,
-				4C4FB09F220353A6004022E1 /* SwiftersDataSource.swift */,
+				4CBA5FBA21BAC0C3006E286F /* Reachability.swift */,
+				4C4FB09F220353A6004022E1 /* SectionedItems.swift */,
 			);
 			path = ds;
 			sourceTree = "<group>";
@@ -304,10 +304,10 @@
 				4C7ED7DE21B807B3000E5727 /* API.swift in Sources */,
 				4CF0B66321B688CF00796934 /* AppDelegate.swift in Sources */,
 				4CDB1CB221B6996D004DB779 /* UserCollectionViewCell.swift in Sources */,
-				4CBA5FBB21BAC0C3006E286F /* DataSource.swift in Sources */,
+				4CBA5FBB21BAC0C3006E286F /* Reachability.swift in Sources */,
 				4C14B9FE22045D5600788997 /* ListLayout.swift in Sources */,
 				4CBA5FB221BA4810006E286F /* Images.swift in Sources */,
-				4C4FB0A0220353A6004022E1 /* SwiftersDataSource.swift in Sources */,
+				4C4FB0A0220353A6004022E1 /* SectionedItems.swift in Sources */,
 				4C94DEF821B7A1D9005AE972 /* GitHub.swift in Sources */,
 				4CDB1CAB21B68F0F004DB779 /* UserCollectionViewController.swift in Sources */,
 				4CF9A4A521BE39EF004AB953 /* DetailUserCollectionViewCell.swift in Sources */,

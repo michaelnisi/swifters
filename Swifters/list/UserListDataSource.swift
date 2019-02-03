@@ -49,7 +49,7 @@ private struct FetchingState {
 
 }
 
-final class UserListDataSource: DataSource {
+final class UserListDataSource: Reachability {
 
   static var messageCollectionViewCellID = "MessageCollectionViewCellID"
   static var userCollectionViewCellID = "UserCollectionViewCellID"
@@ -116,7 +116,7 @@ final class UserListDataSource: DataSource {
 
 // MARK: - SwiftersDataSource
 
-extension UserListDataSource: SwiftersDataSource {}
+extension UserListDataSource: SectionedItems {}
 
 // MARK: - UICollectionViewDataSource
 

@@ -9,14 +9,14 @@
 import UIKit
 
 /// The core data source API for this app.
-protocol SwiftersDataSource: class {
+protocol SectionedItems: class {
   associatedtype Item: Hashable
   var sections: [Array<Item>] { get set }
 }
 
 // MARK: - Updating
 
-extension SwiftersDataSource {
+extension SectionedItems {
 
   /// Commits `sections` updating `collectionView`.
   ///
@@ -99,7 +99,7 @@ extension SwiftersDataSource {
 
 // MARK: - Accessing Items
 
-extension SwiftersDataSource {
+extension SectionedItems {
 
   func itemAt(indexPath: IndexPath) -> Item? {
     guard sections.indices.contains(indexPath.section) else {
