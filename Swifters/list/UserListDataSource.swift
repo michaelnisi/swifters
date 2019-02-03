@@ -100,7 +100,7 @@ final class UserListDataSource: Reachability {
 
   var sections: [[Item]]
 
-  init(sections: [[Item]] = [[.message("We ❤️ Swift")]]) {
+  init(sections: [[Item]] = [[.message("We ❤ Swift")]]) {
     self.sections = sections
   }
 
