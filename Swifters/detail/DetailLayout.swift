@@ -21,21 +21,26 @@ class DetailLayout: UICollectionViewFlowLayout {
     cv.layoutMargins.right = 0
     cv.layoutMargins.left = 0
 
-    let w = cv.bounds.inset(by: cv.layoutMargins).size.width
+    defer {
+      sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+      sectionInsetReference = .fromSafeArea
+    }
 
+    let aw = cv.bounds.inset(by: cv.layoutMargins).width
     let sv = cv.superview!
-    let fullHeight = sv.bounds.inset(by: sv.layoutMargins).height
+    let ah = cv.superview!.bounds.inset(by: sv.layoutMargins).height
 
-    let isMessage = cv.numberOfItems(inSection: 0) < 2
+    // Filling available space if there is just one item.
+    guard cv.numberOfItems(inSection: 0) != 1 else {
+      itemSize = CGSize(width: aw, height: ah)
+      return
+    }
 
-    let h: CGFloat = isMessage ? fullHeight : w
+    let w = (aw > ah ? aw / 2 : aw).rounded(.down)
+    let h: CGFloat = min(ah * 0.7, w).rounded(.down)
 
-    self.itemSize = CGSize(width: w, height: h)
-
-    self.sectionInset = UIEdgeInsets(
-      top: self.minimumInteritemSpacing, left: 0.0, bottom: 0.0, right: 0.0)
-
-    self.sectionInsetReference = .fromSafeArea
+    itemSize = CGSize(width: w, height: h)
   }
+
 
 }

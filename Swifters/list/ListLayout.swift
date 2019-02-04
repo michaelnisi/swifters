@@ -10,9 +10,6 @@ import UIKit
 
 class ListLayout: UICollectionViewFlowLayout {
 
-  private let minColumnWidth: CGFloat = 300.0
-  private let cellHeight: CGFloat = 280.0
-
   override func prepare() {
     super.prepare()
 
@@ -20,28 +17,33 @@ class ListLayout: UICollectionViewFlowLayout {
       return
     }
 
-    minimumInteritemSpacing = 20
+    let s: CGFloat = 20.0
+
+    minimumInteritemSpacing = s
     minimumLineSpacing = 30
 
-    cv.layoutMargins.right = 20
-    cv.layoutMargins.left = 20
+    cv.layoutMargins.right = s
+    cv.layoutMargins.left = s
 
-    let isMessage = cv.numberOfItems(inSection: 0) == 1
-
-    if isMessage {
-      self.itemSize = cv.bounds.inset(by: cv.layoutMargins).size
-    } else {
-      let availableWidth = cv.bounds.inset(by: cv.layoutMargins).width
-      let maxNumColumns = Int(availableWidth / minColumnWidth)
-      let cellWidth = (availableWidth / CGFloat(maxNumColumns)).rounded(.down)
-
-      self.itemSize = CGSize(width: cellWidth, height: cellHeight)
+    defer {
+      sectionInset = UIEdgeInsets(top: s, left: 0.0, bottom: 0.0, right: 0.0)
+      sectionInsetReference = .fromSafeArea
     }
 
-    self.sectionInset = UIEdgeInsets(
-      top: self.minimumInteritemSpacing, left: 0.0, bottom: 0.0, right: 0.0)
+    let aw = cv.bounds.inset(by: cv.layoutMargins).width
+    let sv = cv.superview!
+    let ah = cv.superview!.bounds.inset(by: sv.layoutMargins).height
 
-    self.sectionInsetReference = .fromSafeArea
+    // Filling available space if there is just one item.
+    guard cv.numberOfItems(inSection: 0) != 1 else {
+      itemSize = CGSize(width: aw, height: ah)
+      return
+    }
+
+    let maxNumColumns = Int(aw / 300)
+    let w = (aw / CGFloat(maxNumColumns)).rounded(.down)
+
+    itemSize = CGSize(width: w, height: 280)
   }
 
 }
