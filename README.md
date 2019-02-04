@@ -8,7 +8,7 @@ Swifters progressively populates an in-memory cache, while users scroll a list o
 
 ## Considerations
 
-Creating adaptive UIs collection views and table views can be used to structure apps. This requires rich data sources providing these views with data. Correctly built, with diffing and `performBatchUpdates(_:completion:)`, flexible app structures emerge.
+Creating adaptive UIs, collection views and table views can be used to structure apps. This requires rich data sources providing these views with data. Correctly built, with diffing and `performBatchUpdates(_:completion:)`, flexible app structures emerge.
 
 ### Related
 
