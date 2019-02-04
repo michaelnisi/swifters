@@ -102,7 +102,7 @@ final class UserListDataSource: Reachability {
 
   var sections: [[Item]]
 
-  init(sections: [[Item]] = [[.message("We ❤ Swift")]]) {
+  init(sections: [[Item]] = [[.message("We ♥ Swift")]]) {
     self.sections = sections
   }
 
@@ -113,6 +113,12 @@ final class UserListDataSource: Reachability {
 
   /// The current fetching state.
   private var state = FetchingState()
+
+  /// The query string, defaults to `"language:Swift"`.
+  var queryString = "language:Swift"
+
+  /// The number of items to fetch, defaults to 10.
+  var first: Int = 10
 
 }
 
@@ -264,9 +270,7 @@ extension UserListDataSource {
 
     let ref = GitHub.shared.fetch(
       query: UserSearchQuery(
-        queryString: "language:Swift",
-        cursor: cursor
-      )
+        queryString: queryString, first: first, cursor: cursor)
     ) { (result, error) in
       os_log("received result or error", log: log, type: .debug)
 

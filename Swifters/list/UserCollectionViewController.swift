@@ -50,7 +50,9 @@ final class UserCollectionViewController: UICollectionViewController {
     navigationItem.title = "Swifters"
     navigationItem.largeTitleDisplayMode = .automatic
 
+    dataSource.first = traitCollection.userInterfaceIdiom == .pad ? 15 : 10
     cv.dataSource = dataSource
+
     cv.prefetchDataSource = self
     cv.collectionViewLayout = ListLayout()
 

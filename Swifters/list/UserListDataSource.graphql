@@ -5,8 +5,8 @@ fragment SearchResultUser on User {
   name
 }
 
-query UserSearch($queryString: String!, $cursor: String) {
-  search(query: $queryString, type: USER, first: 10, after: $cursor) {
+query UserSearch($queryString: String!, $first: Int, $cursor: String) {
+  search(query: $queryString, type: USER, first: $first, after: $cursor) {
     userCount
     edges {
       cursor

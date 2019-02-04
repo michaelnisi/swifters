@@ -437,27 +437,29 @@ public final class UserNodeQuery: GraphQLQuery {
 
 public final class UserSearchQuery: GraphQLQuery {
   public let operationDefinition =
-    "query UserSearch($queryString: String!, $cursor: String) {\n  search(query: $queryString, type: USER, first: 10, after: $cursor) {\n    __typename\n    userCount\n    edges {\n      __typename\n      cursor\n      node {\n        __typename\n        ...SearchResultUser\n      }\n    }\n  }\n}"
+    "query UserSearch($queryString: String!, $first: Int, $cursor: String) {\n  search(query: $queryString, type: USER, first: $first, after: $cursor) {\n    __typename\n    userCount\n    edges {\n      __typename\n      cursor\n      node {\n        __typename\n        ...SearchResultUser\n      }\n    }\n  }\n}"
 
   public var queryDocument: String { return operationDefinition.appending(SearchResultUser.fragmentDefinition) }
 
   public var queryString: String
+  public var first: Int?
   public var cursor: String?
 
-  public init(queryString: String, cursor: String? = nil) {
+  public init(queryString: String, first: Int? = nil, cursor: String? = nil) {
     self.queryString = queryString
+    self.first = first
     self.cursor = cursor
   }
 
   public var variables: GraphQLMap? {
-    return ["queryString": queryString, "cursor": cursor]
+    return ["queryString": queryString, "first": first, "cursor": cursor]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Query"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("search", arguments: ["query": GraphQLVariable("queryString"), "type": "USER", "first": 10, "after": GraphQLVariable("cursor")], type: .nonNull(.object(Search.selections))),
+      GraphQLField("search", arguments: ["query": GraphQLVariable("queryString"), "type": "USER", "first": GraphQLVariable("first"), "after": GraphQLVariable("cursor")], type: .nonNull(.object(Search.selections))),
     ]
 
     public private(set) var resultMap: ResultMap

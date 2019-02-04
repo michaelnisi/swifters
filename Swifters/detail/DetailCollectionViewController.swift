@@ -67,6 +67,7 @@ class DetailCollectionViewController: UICollectionViewController {
     originalNavigationBarHeight = navigationController?
       .navigationBar.bounds.height
   }
+
 }
 
 // MARK: - UIScrollViewDelegate
