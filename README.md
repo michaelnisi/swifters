@@ -1,89 +1,49 @@
 # Swifters
 
-The Swifters iOS app lets you browse [Swift](https://swift.org/) users on [GitHub](https://github.com). Its purpose is to explore [GraphQL](https://graphql.org) with [Apollo](https://www.apollographql.com). It uses [GitHub’s GraphQL API](https://developer.github.com/v4/).
+The Swifters iOS app lets you browse [Swift](https://swift.org/) users on [GitHub](https://github.com). Its purpose is to explore [GraphQL](https://graphql.org) with [Apollo iOS](https://www.apollographql.com/docs/ios/), a strongly-typed, caching GraphQL client. Swifters queries GitHub’s [GraphQL API v4](https://developer.github.com/v4/).
 
 ![Screenshot 1](./docs/1.jpg) ![Screenshot 2](./docs/2.jpg)
 
-Swifters progressively populates an in-memory cache, while users scroll a list of Swift developers on GitHub, loading ten at a time. Tapping a developer in the list shows details.
-
-## Considerations
-
-Creating adaptive UIs, collection views and table views can be used to structure apps. This requires rich data sources providing these views with data. Correctly built, with diffing and `performBatchUpdates(_:completion:)`, flexible app structures emerge.
-
-### Related
-
-- [A Tour of UICollectionView](https://developer.apple.com/videos/play/wwdc2018/225/)
-- [DeepDiff](https://github.com/onmyway133/DeepDiff)
-- [SE-0240](https://github.com/apple/swift-evolution/blob/master/proposals/0240-ordered-collection-diffing.md)
-- [SectionedDataSource](https://github.com/michaelnisi/podest/blob/master/Podest/collections/SectionedDataSource.swift)
+Swifters progressively populates its [cache](https://www.apollographql.com/docs/ios/watching-queries.html), while users scroll a list of Swift developers on GitHub, loading two to three handfuls of Swifters at a time. Tapping a developer in the list shows details.
 
 ## Objectives
 
-- Explore GraphQL building a modern application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview). 
-- Compare the imperative and procedural REST approach to the declarative GraphQL.
-- Try pagination using [UICollectionViewDataSourcePrefetching](https://developer.apple.com/documentation/uikit/uicollectionviewdatasourceprefetching).
+- Explore GraphQL building a modern application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview)
+- Compare the imperative and procedural REST approach to the declarative GraphQL
+- Paginate with [UICollectionViewDataSourcePrefetching](https://developer.apple.com/documentation/uikit/uicollectionviewdatasourceprefetching)
 
 ## Dependencies
 
 - 🕸 [Apollo](https://github.com/apollographql/apollo-ios), Caching GraphQL client for iOS
 - 🖼 [Nuke](https://github.com/kean/Nuke), Image loading and caching
 - 🔗 [Ola](https://github.com/michaelnisi/ola), Check reachability of host
-
-#### Apollo
-
-Apollo requires [Node.js](https://nodejs.org) 8.x or newer. And it’s using [npx](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner), which is neat. It lets you execute commands locally, or from a central cache, installing any packages needed.
-
-```
-npx apollo schema:download --endpoint=https://api.github.com/graphql --header="Authorization: <token>"
-```
-
-💡 *You need an [OAuth token](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql) for accessing this API.*
-
-And with that, I’ve just downloaded the 45K LOC schema file of the GitHub GraphQL API v4. 😮
-
-#### Diffing
-
-Every iOS developer has implemented a diffing algorithm for updating collection views or table views, one way or another. Looking around, I found [DeepDiff](https://github.com/onmyway133/DeepDiff) and extracted the diffing into a single 386 LOC [file](./Swifters/ds/diff.swift).
-
-I’m excited about the recent [Ordered Collection Diffing](https://github.com/apple/swift-evolution/blob/master/proposals/0240-ordered-collection-diffing.md) proposal, describing additions to the Swift standard library that provide an interchange format for diffs as well as diffing/patching functionality for appropriate collection types.
-
-## Evaluating GraphQL/Apollo
-
-Reading the Apollo documentation, my main concern with Apollo’s approach is the tight coupling between view controllers and the remote API, merging access and storage. On the other hand, [repositories](https://www.martinfowler.com/eaaCatalog/repository.html) have the same surface and its purpose is removing the serialization layer, which can be a millstone around the neck of developers, rendering them hesitant to change. Propagating an adjustment from the server onto the screen is often laborious and often requires coordination between different teams.
-
-But the service logic leaks into your view controllers. Is that modern? Maybe. The `schema.json` is a contract. I have to read up on GraphQL API versioning.
-
-Apollo does not only remove serialization, but also builds a local graph. I decided to go all in for this little experiment and query from my collection view data sources, which accompanies nicely my other dogma for this demo: collection views only.
-
-## Conclusion
-
-Three days later, I’m impressed. After passing the intial ramp, aquiring a rudimentary understanding of GraphQL and setting up Apollo, it has been a downhill ride—thrilling and fast. Building an app by modeling queries like clay is incredibly effective. Development can get pretty spontaneous that way. For large apps, of course, this may also become a problem, despite all being statically typed, which is pretty amazing by the way.
-
-A week later, do I still believe in REST? I haven’t experienced implementing a GraphQL server—[graphql-erlang](https://github.com/shopgun/graphql-erlang) looks fantastic—but from the client perspective and what I’ve seen so far, I would recommend GraphQL. All parts fell into place quite naturally. Intuitive decisions were mostly right. My reading matter for the next couple of weeks is set. 📚
-
-### Open Questions
-
-- Offline first? How would we persist the graph cache?
-- How does memory management of the graph work?
-- Why is `GraphQLFragment` not `Hashable`?
+- 🦀 [DeepDiff](https://github.com/onmyway133/DeepDiff) Amazingly incredible extraordinary lightning fast diffing
 
 ## Installation
 
-Setting up development, dependency repos are getting cloned to `../`. Consider wrapping the project in its own directory if this would collide with existing directories.
+Setting up for development, dependency repos are getting cloned to `../`. Consider wrapping the project in its own directory if these would collide with existing directories of yours.
 
 ```
-./tools/setup
+$ ./tools/setup
 ```
 
-Add `Swifters.xcodeproj` and the dependency `.xcodeproj` files—Apollo, Nuke, and Ola—to an Xcode Workspace.
+Add `Swifters.xcodeproj` and the dependency `.xcodeproj` files, Apollo, Nuke, and Ola, to an Xcode Workspace.
 
-[Apollo CLI](https://github.com/apollographql/apollo-tooling) is required, to install it locally, which is sufficient thanks to npx, do:
+Apollo iOS uses the Apollo command-line tool. Declared in `package.json`, we can install this dependency with npm.
 
 ```
-npm i apollo@1.9.x
+$ npm i
 ```
 
-Or just `npm i`, I’ve added a vanilla `package.json`. I should move this into the setup script.
+Let’s check if the Apollo CLI is accessible with [npx](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner), the npm package runner for executing CLI tools locally. Without npx we would have to install the apollo package globally.
+
+```
+$ npx apollo -v
+›   Warning: apollo update available from 1.9.2 to 2.4.3
+apollo/1.9.2 darwin-x64 node-v8.12.0
+```
+
+All right! That warning is fine.
 
 ### Accessing GitHub GraphQL API v4
 
