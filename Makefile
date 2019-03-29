@@ -21,9 +21,8 @@ deps:
 	./scripts/setup
 
 $(SCHEMA):
-	npx apollo schema:download --endpoint=$(API) \
+	npx apollo schema:download $(SCHEMA) --endpoint=$(API) \
 		--header="Authorization: Bearer $(GITHUB_TOKEN)"
-	mv ./schema.json $(SCHEMA)
 
 .PHONY: schema
 schema: $(SCHEMA)
