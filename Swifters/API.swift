@@ -46,7 +46,7 @@ public final class UserNodeQuery: GraphQLQuery {
     }
 
     public struct Node: GraphQLSelectionSet {
-      public static let possibleTypes = ["License", "MarketplaceCategory", "MarketplaceListing", "App", "Organization", "Project", "ProjectColumn", "ProjectCard", "Issue", "User", "Repository", "BranchProtectionRule", "Ref", "PullRequest", "UserContentEdit", "Label", "Reaction", "IssueComment", "PullRequestCommit", "Commit", "CommitComment", "Status", "StatusContext", "Tree", "Milestone", "ReviewRequest", "Team", "OrganizationInvitation", "PullRequestReview", "PullRequestReviewComment", "CommitCommentThread", "PullRequestReviewThread", "ClosedEvent", "ReopenedEvent", "SubscribedEvent", "UnsubscribedEvent", "MergedEvent", "ReferencedEvent", "CrossReferencedEvent", "AssignedEvent", "UnassignedEvent", "LabeledEvent", "UnlabeledEvent", "MilestonedEvent", "DemilestonedEvent", "RenamedTitleEvent", "LockedEvent", "UnlockedEvent", "DeployedEvent", "Deployment", "DeploymentStatus", "DeploymentEnvironmentChangedEvent", "HeadRefDeletedEvent", "HeadRefRestoredEvent", "HeadRefForcePushedEvent", "BaseRefForcePushedEvent", "ReviewRequestedEvent", "ReviewRequestRemovedEvent", "ReviewDismissedEvent", "PushAllowance", "ProtectedBranch", "ReviewDismissalAllowance", "DeployKey", "Language", "Release", "ReleaseAsset", "RepositoryTopic", "Topic", "Gist", "GistComment", "PublicKey", "TransferredEvent", "OrganizationIdentityProvider", "ExternalIdentity", "RepositoryInvitation", "Bot", "Blob", "BaseRefChangedEvent", "AddedToProjectEvent", "CommentDeletedEvent", "ConvertedNoteToIssueEvent", "MentionedEvent", "MovedColumnsInProjectEvent", "RemovedFromProjectEvent", "Tag"]
+      public static let possibleTypes = ["CodeOfConduct", "License", "MarketplaceCategory", "MarketplaceListing", "App", "Organization", "Project", "ProjectColumn", "ProjectCard", "Issue", "User", "Repository", "BranchProtectionRule", "Ref", "PullRequest", "UserContentEdit", "Label", "Reaction", "IssueComment", "PullRequestCommit", "Commit", "CommitComment", "Deployment", "DeploymentStatus", "Status", "StatusContext", "Tree", "Milestone", "ReviewRequest", "Team", "UserStatus", "OrganizationInvitation", "PullRequestReviewThread", "PullRequestReviewComment", "PullRequestReview", "CommitCommentThread", "ClosedEvent", "ReopenedEvent", "SubscribedEvent", "UnsubscribedEvent", "MergedEvent", "ReferencedEvent", "CrossReferencedEvent", "AssignedEvent", "UnassignedEvent", "LabeledEvent", "UnlabeledEvent", "MilestonedEvent", "DemilestonedEvent", "RenamedTitleEvent", "LockedEvent", "UnlockedEvent", "DeployedEvent", "DeploymentEnvironmentChangedEvent", "HeadRefDeletedEvent", "HeadRefRestoredEvent", "HeadRefForcePushedEvent", "BaseRefForcePushedEvent", "ReviewRequestedEvent", "ReviewRequestRemovedEvent", "ReviewDismissedEvent", "PushAllowance", "ReviewDismissalAllowance", "DeployKey", "Language", "Release", "ReleaseAsset", "RepositoryTopic", "Topic", "Gist", "GistComment", "PublicKey", "TransferredEvent", "OrganizationIdentityProvider", "ExternalIdentity", "SecurityAdvisory", "RepositoryInvitation", "Bot", "Blob", "BaseRefChangedEvent", "AddedToProjectEvent", "CommentDeletedEvent", "ConvertedNoteToIssueEvent", "MentionedEvent", "MovedColumnsInProjectEvent", "PinnedEvent", "RemovedFromProjectEvent", "UnpinnedEvent", "Tag"]
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
@@ -57,6 +57,10 @@ public final class UserNodeQuery: GraphQLQuery {
 
       public init(unsafeResultMap: ResultMap) {
         self.resultMap = unsafeResultMap
+      }
+
+      public static func makeCodeOfConduct() -> Node {
+        return Node(unsafeResultMap: ["__typename": "CodeOfConduct"])
       }
 
       public static func makeLicense() -> Node {
@@ -139,6 +143,14 @@ public final class UserNodeQuery: GraphQLQuery {
         return Node(unsafeResultMap: ["__typename": "CommitComment"])
       }
 
+      public static func makeDeployment() -> Node {
+        return Node(unsafeResultMap: ["__typename": "Deployment"])
+      }
+
+      public static func makeDeploymentStatus() -> Node {
+        return Node(unsafeResultMap: ["__typename": "DeploymentStatus"])
+      }
+
       public static func makeStatus() -> Node {
         return Node(unsafeResultMap: ["__typename": "Status"])
       }
@@ -163,24 +175,28 @@ public final class UserNodeQuery: GraphQLQuery {
         return Node(unsafeResultMap: ["__typename": "Team"])
       }
 
+      public static func makeUserStatus() -> Node {
+        return Node(unsafeResultMap: ["__typename": "UserStatus"])
+      }
+
       public static func makeOrganizationInvitation() -> Node {
         return Node(unsafeResultMap: ["__typename": "OrganizationInvitation"])
       }
 
-      public static func makePullRequestReview() -> Node {
-        return Node(unsafeResultMap: ["__typename": "PullRequestReview"])
+      public static func makePullRequestReviewThread() -> Node {
+        return Node(unsafeResultMap: ["__typename": "PullRequestReviewThread"])
       }
 
       public static func makePullRequestReviewComment() -> Node {
         return Node(unsafeResultMap: ["__typename": "PullRequestReviewComment"])
       }
 
-      public static func makeCommitCommentThread() -> Node {
-        return Node(unsafeResultMap: ["__typename": "CommitCommentThread"])
+      public static func makePullRequestReview() -> Node {
+        return Node(unsafeResultMap: ["__typename": "PullRequestReview"])
       }
 
-      public static func makePullRequestReviewThread() -> Node {
-        return Node(unsafeResultMap: ["__typename": "PullRequestReviewThread"])
+      public static func makeCommitCommentThread() -> Node {
+        return Node(unsafeResultMap: ["__typename": "CommitCommentThread"])
       }
 
       public static func makeClosedEvent() -> Node {
@@ -251,14 +267,6 @@ public final class UserNodeQuery: GraphQLQuery {
         return Node(unsafeResultMap: ["__typename": "DeployedEvent"])
       }
 
-      public static func makeDeployment() -> Node {
-        return Node(unsafeResultMap: ["__typename": "Deployment"])
-      }
-
-      public static func makeDeploymentStatus() -> Node {
-        return Node(unsafeResultMap: ["__typename": "DeploymentStatus"])
-      }
-
       public static func makeDeploymentEnvironmentChangedEvent() -> Node {
         return Node(unsafeResultMap: ["__typename": "DeploymentEnvironmentChangedEvent"])
       }
@@ -293,10 +301,6 @@ public final class UserNodeQuery: GraphQLQuery {
 
       public static func makePushAllowance() -> Node {
         return Node(unsafeResultMap: ["__typename": "PushAllowance"])
-      }
-
-      public static func makeProtectedBranch() -> Node {
-        return Node(unsafeResultMap: ["__typename": "ProtectedBranch"])
       }
 
       public static func makeReviewDismissalAllowance() -> Node {
@@ -351,6 +355,10 @@ public final class UserNodeQuery: GraphQLQuery {
         return Node(unsafeResultMap: ["__typename": "ExternalIdentity"])
       }
 
+      public static func makeSecurityAdvisory() -> Node {
+        return Node(unsafeResultMap: ["__typename": "SecurityAdvisory"])
+      }
+
       public static func makeRepositoryInvitation() -> Node {
         return Node(unsafeResultMap: ["__typename": "RepositoryInvitation"])
       }
@@ -387,8 +395,16 @@ public final class UserNodeQuery: GraphQLQuery {
         return Node(unsafeResultMap: ["__typename": "MovedColumnsInProjectEvent"])
       }
 
+      public static func makePinnedEvent() -> Node {
+        return Node(unsafeResultMap: ["__typename": "PinnedEvent"])
+      }
+
       public static func makeRemovedFromProjectEvent() -> Node {
         return Node(unsafeResultMap: ["__typename": "RemovedFromProjectEvent"])
+      }
+
+      public static func makeUnpinnedEvent() -> Node {
+        return Node(unsafeResultMap: ["__typename": "UnpinnedEvent"])
       }
 
       public static func makeTag() -> Node {

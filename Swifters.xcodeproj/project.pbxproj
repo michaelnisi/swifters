@@ -9,20 +9,23 @@
 /* Begin PBXBuildFile section */
 		4C14B9FE22045D5600788997 /* ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14B9FD22045D5600788997 /* ListLayout.swift */; };
 		4C14BA002204637400788997 /* DetailLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14B9FF2204637400788997 /* DetailLayout.swift */; };
+		4C3EFD35224CE08C0086F1F2 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EFD34224CE08C0086F1F2 /* Apollo.framework */; };
+		4C3EFD37224CE08C0086F1F2 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EFD36224CE08C0086F1F2 /* Nuke.framework */; };
+		4C3EFD39224CE08C0086F1F2 /* Ola.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EFD38224CE08C0086F1F2 /* Ola.framework */; };
+		4C3EFD3A224D20B00086F1F2 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EFD34224CE08C0086F1F2 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C3EFD3B224D20B00086F1F2 /* Nuke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EFD36224CE08C0086F1F2 /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C3EFD3C224D20B00086F1F2 /* Ola.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3EFD38224CE08C0086F1F2 /* Ola.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C45346A21B972B700A44DA9 /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45346821B972B700A44DA9 /* ContactCollectionViewCell.swift */; };
 		4C45346B21B972B700A44DA9 /* ContactCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C45346921B972B700A44DA9 /* ContactCollectionViewCell.xib */; };
 		4C45346E21B984B600A44DA9 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45346C21B984B600A44DA9 /* MessageCollectionViewCell.swift */; };
 		4C45346F21B984B600A44DA9 /* MessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C45346D21B984B600A44DA9 /* MessageCollectionViewCell.xib */; };
 		4C4FB0A0220353A6004022E1 /* SectionedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FB09F220353A6004022E1 /* SectionedItems.swift */; };
 		4C7ED7DE21B807B3000E5727 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7ED7DD21B807B3000E5727 /* API.swift */; };
-		4C7ED7E121B82FA5000E5727 /* Apollo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C94DEFA21B7B1AC005AE972 /* Apollo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C94DEF821B7A1D9005AE972 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94DEF721B7A1D9005AE972 /* GitHub.swift */; };
-		4CBA5FB021BA463B006E286F /* Nuke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBA5FAD21BA4604006E286F /* Nuke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CBA5FB221BA4810006E286F /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FB121BA4810006E286F /* Images.swift */; };
 		4CBA5FB721BA798A006E286F /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA5FB621BA798A006E286F /* config.json */; };
 		4CBA5FB921BA87E7006E286F /* diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FB821BA87E7006E286F /* diff.swift */; };
 		4CBA5FBB21BAC0C3006E286F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5FBA21BAC0C3006E286F /* Reachability.swift */; };
-		4CD8B0D621BBDF6F00AE5C03 /* Ola.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD8B0D421BBDCA800AE5C03 /* Ola.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CDB1CAB21B68F0F004DB779 /* UserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CAA21B68F0F004DB779 /* UserCollectionViewController.swift */; };
 		4CDB1CAD21B68FB4004DB779 /* UserListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CAC21B68FB4004DB779 /* UserListDataSource.swift */; };
 		4CDB1CB221B6996D004DB779 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CB021B6996D004DB779 /* UserCollectionViewCell.swift */; };
@@ -44,9 +47,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4CD8B0D621BBDF6F00AE5C03 /* Ola.framework in Embed Frameworks */,
-				4CBA5FB021BA463B006E286F /* Nuke.framework in Embed Frameworks */,
-				4C7ED7E121B82FA5000E5727 /* Apollo.framework in Embed Frameworks */,
+				4C3EFD3A224D20B00086F1F2 /* Apollo.framework in Embed Frameworks */,
+				4C3EFD3B224D20B00086F1F2 /* Nuke.framework in Embed Frameworks */,
+				4C3EFD3C224D20B00086F1F2 /* Ola.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +59,9 @@
 /* Begin PBXFileReference section */
 		4C14B9FD22045D5600788997 /* ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLayout.swift; sourceTree = "<group>"; };
 		4C14B9FF2204637400788997 /* DetailLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLayout.swift; sourceTree = "<group>"; };
+		4C3EFD34224CE08C0086F1F2 /* Apollo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Apollo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3EFD36224CE08C0086F1F2 /* Nuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3EFD38224CE08C0086F1F2 /* Ola.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ola.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45346821B972B700A44DA9 /* ContactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C45346921B972B700A44DA9 /* ContactCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C45346C21B984B600A44DA9 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3EFD35224CE08C0086F1F2 /* Apollo.framework in Frameworks */,
+				4C3EFD37224CE08C0086F1F2 /* Nuke.framework in Frameworks */,
+				4C3EFD39224CE08C0086F1F2 /* Ola.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +111,9 @@
 		4C94DEF921B7B1AC005AE972 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C3EFD34224CE08C0086F1F2 /* Apollo.framework */,
+				4C3EFD36224CE08C0086F1F2 /* Nuke.framework */,
+				4C3EFD38224CE08C0086F1F2 /* Ola.framework */,
 				4CD8B0D421BBDCA800AE5C03 /* Ola.framework */,
 				4CBA5FAD21BA4604006E286F /* Nuke.framework */,
 				4C94DEFA21B7B1AC005AE972 /* Apollo.framework */,
@@ -376,6 +388,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -437,6 +450,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -463,7 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X23V32HT8X;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Swifters/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -481,7 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X23V32HT8X;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Swifters/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

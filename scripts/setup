@@ -7,7 +7,7 @@ if [[ -h $SOURCE ]]; then
   SOURCE="$( readlink "$SOURCE" )"
 fi
 
-DIR="$( cd -P "$( dirname "$SOURCE" )/../.." && pwd )"
+DIR="$( cd -P "$( dirname "$SOURCE" )/../deps" && pwd )"
 
 DEPS=(apollographql/apollo-ios kean/Nuke michaelnisi/ola)
 
@@ -21,8 +21,4 @@ clone() {
   done
 }
 
-main() {
-  clone
-}
-
-main
+clone

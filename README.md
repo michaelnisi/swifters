@@ -4,7 +4,7 @@ The Swifters iOS app lets you browse [Swift](https://swift.org/) users on [GitHu
 
 The Swifters iOS app lets you browse [Swift](https://swift.org/) users on [GitHub](https://github.com). Its purpose is to explore [GraphQL](https://graphql.org) with [Apollo iOS](https://www.apollographql.com/docs/ios/), a strongly-typed, caching GraphQL client. Swifters queries GitHub’s [GraphQL API v4](https://developer.github.com/v4/).
 
-![Screenshot 1](./docs/1.jpg) ![Screenshot 2](./docs/2.jpg)
+![Screenshot 1](./screenshots/1.jpg) ![Screenshot 2](./screenshots/2.jpg)
 
 Swifters progressively populates its [cache](https://www.apollographql.com/docs/ios/watching-queries.html), while users scroll a list of Swift developers on GitHub, loading two to three handfuls of Swifters at a time. Tapping a developer in the list shows details.
 
@@ -16,57 +16,44 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 ## Dependencies
 
-- 🕸 [Apollo](https://github.com/apollographql/apollo-ios), Caching GraphQL client for iOS
-- 🖼 [Nuke](https://github.com/kean/Nuke), Image loading and caching
-- 🔗 [Ola](https://github.com/michaelnisi/ola), Check reachability of host
-- 🦀 [DeepDiff](https://github.com/onmyway133/DeepDiff) Amazingly incredible extraordinary lightning fast diffing
+- 💫 [Apollo](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
+- 🖼 [Nuke](https://github.com/kean/Nuke) – Image loading and caching
+- 🔗 [Ola](https://github.com/michaelnisi/ola) – Check reachability of host
+- 🦀 [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
 
 ## Installation
 
-Setting up for development, dependency repos are getting cloned to `../`. Consider wrapping the project in its own directory if these would collide with existing directories of yours.
+Swifters needs a personal access token to communicate with [GitHub’s GraphQL server](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql).
+
+These scopes are required:
+
+- `read:user`
+- `user:email`
+
+### Building with your token
+
+Select your development team in the Xcode project editor and, with your `<token>`, try building the app.
 
 ```
-$ ./tools/setup
+$ GITHUB_TOKEN=<token> make
 ```
 
-Add `Swifters.xcodeproj` and the dependency `.xcodeproj` files, Apollo, Nuke, and Ola, to an Xcode Workspace.
+#### What this does
 
-Apollo iOS uses the Apollo command-line tool. Declared in `package.json`, we can install this dependency with npm.
+- Clone repositories of framework dependencies into `./deps`
+- Download the GitHub API schema to `./Swifters/schema.json`
+- Install your token in `./Swifters/config.json` for runtime access
+- Build the Swifters Xcode scheme (for validation)
 
-```
-$ npm i
-```
-
-Let’s check if the Apollo CLI is accessible with [npx](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner), the npm package runner for executing CLI tools locally. Without npx we would have to install the apollo package globally.
-
-```
-$ npx apollo -v
-›   Warning: apollo update available from 1.9.2 to 2.4.3
-apollo/1.9.2 darwin-x64 node-v8.12.0
-```
-
-All right! That warning is fine.
-
-### Accessing GitHub GraphQL API v4
-
-A personal access token is required to communicate with [GitHub’s GraphQL server](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql).
-
-Swifters needs following scopes:
+If you succeed, you can now run the app in a simulator or on a device from the workspace.
 
 ```
-read:user
-user:email
+$ open Swifters.xcworkspace
 ```
 
-To configure the app with your token, do:
+### Node.js
 
-```
-GITHUB_TOKEN=<token> ./tools/configure
-```
-
-## Building the App
-
-Xcode needs access to the Node toolchain. If you’re having issues with Xcode not finding Node, try:
+The code generation build step uses [Apollo CLI](https://github.com/apollographql/apollo-tooling), thus Xcode needs access to the Node toolchain for the build to succeed. If you’re having issues with Xcode not finding Node, try:
 
 ```
 ln -s $(which node) /usr/local/bin/node

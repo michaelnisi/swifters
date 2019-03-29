@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:deps/apollo-ios/Apollo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:deps/Nuke/Nuke.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:deps/ola/Ola.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Swifters.xcodeproj">
+   </FileRef>
+</Workspace>

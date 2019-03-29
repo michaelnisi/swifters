@@ -67,14 +67,11 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-# Node.js
+# Swifters
 #
-# A requirement of Apollo.
+# Dependencies and configuration of this app.
 
+deps
 node_modules
-
-# Configuration
-#
-# The app config file.
-
 Swifters/config.json
+Swifters/schema.json
