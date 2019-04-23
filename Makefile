@@ -2,6 +2,9 @@
 # Makefile - Build Swifters
 #
 
+WORKSPACE := $(shell echo $(workspace))
+SCHEME := Swifters
+
 MAKEFLAGS += --warn-undefined-variables
 
 NPX := npx
@@ -38,8 +41,18 @@ build: deps $(CONFIG)
 	$(XCODEBUILD) build -workspace $(NAME).xcworkspace \
 		-configuration Debug -scheme $(NAME)
 
+docs:
+ifdef WORKSPACE
+	jazzy -x -workspace,$(WORKSPACE),-scheme,$(SCHEME) \
+		--min-acl internal \
+		--author "Michael Nisi" \
+		--author_url https://troubled.pro
+else
+	@echo "Which workspace?"
+endif
+
 .PHONY: clean
 clean:
 	rm $(CONFIG)
 	rm $(SCHEMA)
-	rm -rf deps
+	rm -rf deps docs

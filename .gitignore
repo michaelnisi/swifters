@@ -71,6 +71,7 @@ fastlane/test_output
 #
 # Dependencies and configuration of this app.
 
+docs
 deps
 node_modules
 Swifters/config.json

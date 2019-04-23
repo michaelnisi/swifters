@@ -43,7 +43,9 @@ $ GITHUB_TOKEN=<token> make
 - Install your token in `./Swifters/config.json` for runtime access
 - Build the Swifters Xcode scheme (for validation)
 
-Unless you have selected a development team in the project editor, in the 'Swifters' target, the build will fail, but you should now be set to try the app in a simulator. Just select a team to deploy onto a device.
+#### Expected output
+
+Unless you have selected a development team in the project editor, in the 'Swifters' target, the build will fail, but you should now be set to try the app in a simulator. Just select a team for signing to deploy onto a device.
 
 ### Enjoy
 
