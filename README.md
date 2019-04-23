@@ -45,15 +45,16 @@ $ GITHUB_TOKEN=<token> make
 
 #### Expected output
 
-Unless you have selected a development team in the project editor, in the 'Swifters' target, the build will fail, but you should now be set to try the app in a simulator. Just select a team for signing to deploy onto a device.
+Unless you have selected a team, the last step will fail, but leave you set for running the app in a simulator. If you plan to run Swifters on a decice, just select a development team in the project editor of the Swifters target for signing.
 
-### Enjoy
+### Running the app
 
 ```
 $ open Swifters.xcworkspace
 ```
 
-Select 'Swifters' target and Run.
+- Select Swifters target
+- Run ⌘R 🙌
 
 ### Node.js
 
