@@ -32,8 +32,6 @@ These scopes are required:
 
 ### Building with your token
 
-Select your development team in the Xcode project editor and, with your `<token>`, try building the app.
-
 ```
 $ GITHUB_TOKEN=<token> make
 ```
@@ -45,11 +43,15 @@ $ GITHUB_TOKEN=<token> make
 - Install your token in `./Swifters/config.json` for runtime access
 - Build the Swifters Xcode scheme (for validation)
 
-If you succeed, you can now run the app in a simulator or on a device from the workspace.
+Unless you have selected a development team in the project editor, in the 'Swifters' target, the build will fail, but you should now be set to try the app in a simulator. Just select a team to deploy onto a device.
+
+### Enjoy
 
 ```
 $ open Swifters.xcworkspace
 ```
+
+Select 'Swifters' target and Run.
 
 ### Node.js
 

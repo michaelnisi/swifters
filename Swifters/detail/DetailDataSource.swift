@@ -58,14 +58,14 @@ final class DetailDataSource: Reachability {
       }
     }
 
-    public var hashValue: Int {
+    public func hash(into hasher: inout Hasher) {
       switch self {
       case .message(let string):
-        return string.hashValue
+        hasher.combine(string)
       case .contact(let userDetail):
-        return userDetail.id.hashValue
+        hasher.combine(userDetail.id)
       case .detail(let userDetail, _):
-        return userDetail.id.hashValue
+        hasher.combine(userDetail.id)
       }
     }
 

@@ -88,13 +88,13 @@ final class UserListDataSource: Reachability {
         return false
       }
     }
-
-    public var hashValue: Int {
+    
+    public func hash(into hasher: inout Hasher) {
       switch self {
       case .message(let string):
-        return string.hashValue
+        hasher.combine(string)
       case .user(let user, _):
-        return user.id.hashValue
+        hasher.combine(user.id)
       }
     }
 
