@@ -2,15 +2,13 @@
 # Makefile - Build Swifters
 #
 
-WORKSPACE := $(shell echo $(workspace))
-SCHEME := Swifters
-
 MAKEFLAGS += --warn-undefined-variables
 
 NPX := npx
 XCODEBUILD := xcodebuild
 
 NAME := Swifters
+WORKSPACE := $(shell echo $(workspace))
 
 API := https://api.github.com/graphql
 
@@ -43,7 +41,7 @@ build: deps $(CONFIG)
 
 docs:
 ifdef WORKSPACE
-	jazzy -x -workspace,$(WORKSPACE),-scheme,$(SCHEME) \
+	jazzy -x -workspace,$(WORKSPACE),-scheme,$(NAME) \
 		--min-acl internal \
 		--author "Michael Nisi" \
 		--author_url https://troubled.pro
