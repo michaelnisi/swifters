@@ -53,7 +53,7 @@ Unless you have selected a team, the last step will fail, but leave you set for 
 $ open Swifters.xcworkspace
 ```
 
-- Select Swifters target
+- Select Swifters scheme
 - Run ⌘R 🙌
 
 ### Node.js
