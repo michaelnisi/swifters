@@ -10,20 +10,32 @@ import Foundation
 import Apollo
 
 final class GitHub {
+  
+  /// Returns the Swifters URL cache.
+  ///
+  /// If GitHub’s API would not be Cache-Control: no-cache, we would probably
+  /// be caching more aggressively, but in this case users must be online.
+  private static func configureCache(configuration: inout URLSessionConfiguration) {
+    configuration.urlCache =  URLCache(
+      memoryCapacity: .max, 
+      diskCapacity: .max, 
+      diskPath: "com.github.api"
+    )
+    configuration.requestCachePolicy =  .useProtocolCachePolicy
+  }
 
   static var shared: ApolloClient = {
-    let c = URLSessionConfiguration.default
-
+    var c = URLSessionConfiguration.default
+    
+    configureCache(configuration: &c)
+    
     let token: String = UserDefaults.standard.string(forKey: "token")!
-
     c.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
-
     let url = URL(string: "https://api.github.com/graphql")!
     let t = HTTPNetworkTransport(url: url, configuration: c)
 
     return ApolloClient(networkTransport: t)
   }()
-
 }
 
 // MARK: - Formatting Errors
@@ -49,7 +61,6 @@ extension GitHub {
 
     return error.localizedDescription
   }
-
 }
 
 // MARK: - Formatting Dates
@@ -85,5 +96,4 @@ extension GitHub {
 
     return str
   }
-
 }
