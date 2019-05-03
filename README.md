@@ -39,8 +39,8 @@ $ GITHUB_TOKEN=<token> make
 #### What this does
 
 - Clone repositories of framework dependencies into `./deps`
-- Download the GitHub API schema to `./Swifters/schema.json`
-- Install your token in `./Swifters/config.json` for runtime access
+- Generate `./apollo.config.js`
+- Copy `./apollo.config.js` to `./Swifters/github/apollo.config.json` 
 - Build the Swifters Xcode scheme (for validation)
 
 #### Expected output
@@ -48,12 +48,6 @@ $ GITHUB_TOKEN=<token> make
 Unless you have selected a team, the last step will fail, but leave you set for running the app in a simulator. If you plan to run Swifters on a decice, just select a development team in the project editor of the Swifters target for signing.
 
 #### Manual Code Generation
-
-Firstly and just once, translating Apollo configuration into JSON.
-
-```
-$ node apollo.config.js > Swifters/github/apollo.config.json
-```
 
 Generating Swift files from queries.
 

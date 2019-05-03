@@ -10,6 +10,7 @@ NAME := Swifters
 WORKSPACE := $(shell echo $(workspace))
 
 CONFIG := ./apollo.config.js
+JSON := ./Swifters/github/apollo.config.json
 
 all: $(CONFIG)
 
@@ -20,8 +21,12 @@ deps:
 $(CONFIG):
 	./scripts/configure
 
-.PHONY: config
 config: $(CONFIG)
+
+$(JSON):
+	node $(CONFIG) > $(JSON)
+
+json: config $(JSON)
 
 .PHONY: build
 build: deps $(CONFIG)
@@ -40,5 +45,5 @@ endif
 
 .PHONY: clean
 clean:
-	rm $(CONFIG)
+	rm $(CONFIG) $(JSON)
 	rm -rf deps docs
