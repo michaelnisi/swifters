@@ -31,10 +31,10 @@
 		4CDB1CB321B6996D004DB779 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB1CB121B6996D004DB779 /* UserCollectionViewCell.xib */; };
 		4CDB1CC021B6F180004DB779 /* DetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CBF21B6F180004DB779 /* DetailCollectionViewController.swift */; };
 		4CDB1CC321B6F25F004DB779 /* DetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDB1CC221B6F25F004DB779 /* DetailDataSource.swift */; };
-		4CE011AB227C00AA00B2DF6E /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE011A9227C00AA00B2DF6E /* Types.graphql.swift */; };
-		4CE011AD227C48F400B2DF6E /* DetailDataSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE011AC227C48F300B2DF6E /* DetailDataSource.graphql.swift */; };
-		4CE011AE227C490500B2DF6E /* UserListDataSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE011A8227C00AA00B2DF6E /* UserListDataSource.graphql.swift */; };
 		4CE011B0227C4A3200B2DF6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4CE011AF227C4A3200B2DF6E /* README.md */; };
+		4CE011B4227C73C000B2DF6E /* DetailDataSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE011B1227C73C000B2DF6E /* DetailDataSource.graphql.swift */; };
+		4CE011B5227C73C000B2DF6E /* UserListDataSource.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE011B2227C73C000B2DF6E /* UserListDataSource.graphql.swift */; };
+		4CE011B6227C73C000B2DF6E /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE011B3227C73C000B2DF6E /* Types.graphql.swift */; };
 		4CF0B66321B688CF00796934 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF0B66221B688CF00796934 /* AppDelegate.swift */; };
 		4CF0B66821B688CF00796934 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF0B66621B688CF00796934 /* Main.storyboard */; };
 		4CF0B66A21B688D000796934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF0B66921B688D000796934 /* Assets.xcassets */; };
@@ -86,10 +86,10 @@
 		4CDB1CB121B6996D004DB779 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		4CDB1CBF21B6F180004DB779 /* DetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailCollectionViewController.swift; path = Swifters/detail/DetailCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		4CDB1CC221B6F25F004DB779 /* DetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDataSource.swift; sourceTree = "<group>"; };
-		4CE011A8227C00AA00B2DF6E /* UserListDataSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserListDataSource.graphql.swift; path = Swifters/UserListDataSource.graphql.swift; sourceTree = SOURCE_ROOT; };
-		4CE011A9227C00AA00B2DF6E /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Types.graphql.swift; path = Swifters/Types.graphql.swift; sourceTree = SOURCE_ROOT; };
-		4CE011AC227C48F300B2DF6E /* DetailDataSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDataSource.graphql.swift; sourceTree = SOURCE_ROOT; };
 		4CE011AF227C4A3200B2DF6E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4CE011B1227C73C000B2DF6E /* DetailDataSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDataSource.graphql.swift; sourceTree = "<group>"; };
+		4CE011B2227C73C000B2DF6E /* UserListDataSource.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListDataSource.graphql.swift; sourceTree = "<group>"; };
+		4CE011B3227C73C000B2DF6E /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
 		4CF0B65F21B688CF00796934 /* Swifters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swifters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF0B66221B688CF00796934 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF0B66721B688CF00796934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,8 +151,6 @@
 				4CDB1CAA21B68F0F004DB779 /* UserCollectionViewController.swift */,
 				4CDB1CAC21B68FB4004DB779 /* UserListDataSource.swift */,
 				4C94DF0121B7F170005AE972 /* UserListDataSource.graphql */,
-				4CE011A8227C00AA00B2DF6E /* UserListDataSource.graphql.swift */,
-				4CE011A9227C00AA00B2DF6E /* Types.graphql.swift */,
 				4CDB1CB021B6996D004DB779 /* UserCollectionViewCell.swift */,
 				4CDB1CB121B6996D004DB779 /* UserCollectionViewCell.xib */,
 				4C45346C21B984B600A44DA9 /* MessageCollectionViewCell.swift */,
@@ -165,6 +163,9 @@
 		4CDB1CBE21B6EFF9004DB779 /* github */ = {
 			isa = PBXGroup;
 			children = (
+				4CE011B1227C73C000B2DF6E /* DetailDataSource.graphql.swift */,
+				4CE011B3227C73C000B2DF6E /* Types.graphql.swift */,
+				4CE011B2227C73C000B2DF6E /* UserListDataSource.graphql.swift */,
 				4C94DEF721B7A1D9005AE972 /* GitHub.swift */,
 			);
 			path = github;
@@ -176,7 +177,6 @@
 				4CDB1CBF21B6F180004DB779 /* DetailCollectionViewController.swift */,
 				4CDB1CC221B6F25F004DB779 /* DetailDataSource.swift */,
 				4C94DEFF21B7E7A0005AE972 /* DetailDataSource.graphql */,
-				4CE011AC227C48F300B2DF6E /* DetailDataSource.graphql.swift */,
 				4CF9A4A321BE39EF004AB953 /* DetailUserCollectionViewCell.swift */,
 				4CF9A4A421BE39EF004AB953 /* DetailUserCollectionViewCell.xib */,
 				4C45346821B972B700A44DA9 /* ContactCollectionViewCell.swift */,
@@ -301,7 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CE011AE227C490500B2DF6E /* UserListDataSource.graphql.swift in Sources */,
+				4CE011B6227C73C000B2DF6E /* Types.graphql.swift in Sources */,
 				4C14BA002204637400788997 /* DetailLayout.swift in Sources */,
 				4CF0B66321B688CF00796934 /* AppDelegate.swift in Sources */,
 				4CDB1CB221B6996D004DB779 /* UserCollectionViewCell.swift in Sources */,
@@ -310,7 +310,7 @@
 				4CBA5FB221BA4810006E286F /* Images.swift in Sources */,
 				4C4FB0A0220353A6004022E1 /* SectionedItems.swift in Sources */,
 				4C94DEF821B7A1D9005AE972 /* GitHub.swift in Sources */,
-				4CE011AD227C48F400B2DF6E /* DetailDataSource.graphql.swift in Sources */,
+				4CE011B4227C73C000B2DF6E /* DetailDataSource.graphql.swift in Sources */,
 				4CDB1CAB21B68F0F004DB779 /* UserCollectionViewController.swift in Sources */,
 				4CF9A4A521BE39EF004AB953 /* DetailUserCollectionViewCell.swift in Sources */,
 				4CBA5FB921BA87E7006E286F /* diff.swift in Sources */,
@@ -318,8 +318,8 @@
 				4C45346E21B984B600A44DA9 /* MessageCollectionViewCell.swift in Sources */,
 				4CDB1CC321B6F25F004DB779 /* DetailDataSource.swift in Sources */,
 				4CDB1CAD21B68FB4004DB779 /* UserListDataSource.swift in Sources */,
-				4CE011AB227C00AA00B2DF6E /* Types.graphql.swift in Sources */,
 				4C45346A21B972B700A44DA9 /* ContactCollectionViewCell.swift in Sources */,
+				4CE011B5227C73C000B2DF6E /* UserListDataSource.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

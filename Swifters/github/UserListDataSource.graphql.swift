@@ -1,4 +1,4 @@
-//  This file was automatically generated and should not be edited.
+//  This file was automatically generated (by me) and should not be edited.
 
 import Apollo
 
