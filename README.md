@@ -49,8 +49,16 @@ Unless you have selected a team, the last step will fail, but leave you set for 
 
 #### Manual Code Generation
 
+Firstly and just once, translating Apollo configuration into JSON.
+
 ```
-$ ${HOME}/node/apollo-tooling/packages/apollo/bin/run client:codegen --target=swift .
+$ node apollo.config.js > Swifters/github/apollo.config.json
+```
+
+Generating Swift files from queries.
+
+```
+$ ${HOME}/node/apollo-tooling/packages/apollo/bin/run client:codegen --target=swift ./Swifters/github
 ````
 
 ### Running the app

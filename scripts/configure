@@ -10,17 +10,13 @@ fi
 SOURCE_ROOT="${SOURCE_ROOT:-$( cd -P "$( dirname "$SOURCE" )/.." && pwd )}"
 
 config() {
-  local in="$SOURCE_ROOT/config.json.in"
-  local out="$SOURCE_ROOT/Swifters/config.json"
+  local in="$SOURCE_ROOT/apollo.config.js.in"
+  local out="$SOURCE_ROOT/apollo.config.js"
   sed \
     -e "s;@@GITHUB_TOKEN@@;$GITHUB_TOKEN;g" \
     $in > $out
 }
 
-populate() {
-  config
-}
-
-populate
+config
 
 exit 0

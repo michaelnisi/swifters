@@ -25,18 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     window?.tintColor = UIColor(named: "Orange")
-
-    let bundle = Bundle(for: AppDelegate.classForCoder())
-    let url = bundle.url(forResource: "config", withExtension: "json")!
-    let json = try! Data(contentsOf: url)
-    let conf = try! JSONDecoder().decode(Configuration.self, from: json)
-
-    os_log("using configuration: %@", log: log, type: .info, String(describing: conf))
-
-    UserDefaults.standard.register(defaults: [
-      "token": conf.token
-    ])
-
+    
     return true
   }
 

@@ -9,7 +9,22 @@
 import Foundation
 import Apollo
 
-final class GitHub {
+extension ApolloClient {
+  
+  struct ApolloConfig: Codable {
+    
+    struct Service: Codable {
+      
+      struct Headers: Codable {
+        let authorization: String
+      }
+      
+      let url: String
+      let headers: Headers
+    }
+    
+    let service: Service
+  }
   
   /// Returns the Swifters URL cache.
   ///
@@ -23,19 +38,30 @@ final class GitHub {
     )
     configuration.requestCachePolicy =  .useProtocolCachePolicy
   }
-
-  static var shared: ApolloClient = {
+  
+  private static func loadConfig() throws -> ApolloConfig {
+    let bundle = Bundle(for: AppDelegate.classForCoder())
+    let url = bundle.url(forResource: "apollo.config", withExtension: "json")!
+    let json = try Data(contentsOf: url)
+    return try JSONDecoder().decode(ApolloConfig.self, from: json)
+  }
+  
+  public convenience init() {
     var c = URLSessionConfiguration.default
     
-    configureCache(configuration: &c)
+    ApolloClient.configureCache(configuration: &c)
     
-    let token: String = UserDefaults.standard.string(forKey: "token")!
-    c.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
-    let url = URL(string: "https://api.github.com/graphql")!
+    let conf = try! ApolloClient.loadConfig()
+    c.httpAdditionalHeaders = ["Authorization": conf.service.headers.authorization]
+    let url = URL(string: conf.service.url)!
     let t = HTTPNetworkTransport(url: url, configuration: c)
+    
+    self.init(networkTransport: t)
+  }
+}
 
-    return ApolloClient(networkTransport: t)
-  }()
+final class GitHub {
+  static var shared = ApolloClient()
 }
 
 // MARK: - Formatting Errors

@@ -74,5 +74,5 @@ fastlane/test_output
 docs
 deps
 node_modules
-Swifters/config.json
-Swifters/schema.json
+*apollo.config.js
+*apollo.config.json
