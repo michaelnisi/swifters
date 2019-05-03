@@ -93,14 +93,7 @@ extension GitHub {
 
 extension GitHub {
 
-  private static var apolloDateFormatter: DateFormatter = {
-    let df = DateFormatter()
-
-    df.timeZone = TimeZone(secondsFromGMT: 0)
-    df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-
-    return df
-  }()
+  private static var iso8601DateFormatter = ISO8601DateFormatter()
 
   private static var naturalDateFormatter: DateFormatter = {
     let df = DateFormatter()
@@ -113,7 +106,7 @@ extension GitHub {
   }()
 
   static func makeDateCreatedAtString(string: String) -> String {
-    let df = apolloDateFormatter
+    let df = iso8601DateFormatter
 
     guard let date = df.date(from: string),
       let str = naturalDateFormatter.string(for: date) else {
