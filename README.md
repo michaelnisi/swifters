@@ -47,6 +47,12 @@ $ GITHUB_TOKEN=<token> make
 
 Unless you have selected a team, the last step will fail, but leave you set for running the app in a simulator. If you plan to run Swifters on a decice, just select a development team in the project editor of the Swifters target for signing.
 
+#### Manual Code Generation
+
+```
+$ ${HOME}/node/apollo-tooling/packages/apollo/bin/run client:codegen --target=swift .
+````
+
 ### Running the app
 
 ```
