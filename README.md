@@ -41,7 +41,7 @@ These scopes are required:
 - `read:user`
 - `user:email`
 
-### Building with your token
+### Preparing the Workspace
 
 ```
 $ GITHUB_TOKEN=<token> make
