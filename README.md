@@ -26,12 +26,6 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 ## Installation
 
-### Apollo CLI
-
-```
-$ npm i -g apollo
-```
-
 ### Accessing GitHub
 
 Swifters needs a personal access token to communicate with [GitHub’s GraphQL server](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql).
@@ -63,6 +57,12 @@ $ open Swifters.xcworkspace
 - Run ⌘R 🙌
 
 ## Onwards
+
+### Apollo CLI
+
+```
+$ npm i -g apollo
+```
 
 ### Generating Swift files from GraphQL queries
 
