@@ -18,7 +18,6 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 - [Node.js](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine
 - [Apollo CLI](https://github.com/apollographql/apollo-tooling) – Tooling for development and production Apollo workflows
-
 - [Apollo iOS](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
 - [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
 - [Nuke](https://github.com/kean/Nuke) – Image loading and caching
