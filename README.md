@@ -51,7 +51,7 @@ $ open Swifters.xcworkspace
 ```
 
 - Select Swifters scheme
-- Run ⌘R 
+- Run ⌘R
 
 🙌
 
@@ -66,6 +66,8 @@ $ npm i -g apollo
 ```
 
 ### Generating Swift files from GraphQL queries
+
+After you have adjusted `*.graphql` queries to your needs, generate the Swift source files. Apollo recommends adding a Run Script Phase to your Xcode target, but I find using the command line interface directly less opaque.
 
 ```
 $ apollo client:codegen --target=swift ./Swifters/github
