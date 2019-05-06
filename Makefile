@@ -4,35 +4,29 @@
 
 MAKEFLAGS += --warn-undefined-variables
 
-NPX := npx
 XCODEBUILD := xcodebuild
 
 NAME := Swifters
 WORKSPACE := $(shell echo $(workspace))
 
-API := https://api.github.com/graphql
+CONFIG := ./apollo.config.js
+JSON := ./Swifters/github/apollo.config.json
 
-CONFIG := ./Swifters/config.json
-SCHEMA := ./Swifters/schema.json
-
-all: $(SCHEMA) $(CONFIG) build
+all: deps $(JSON)
 
 deps:
 	mkdir deps
 	./scripts/setup
 
-$(SCHEMA):
-	npx apollo schema:download $(SCHEMA) --endpoint=$(API) \
-		--header="Authorization: Bearer $(GITHUB_TOKEN)"
-
-.PHONY: schema
-schema: $(SCHEMA)
-
 $(CONFIG):
 	./scripts/configure
 
-.PHONY: config
 config: $(CONFIG)
+
+$(JSON): $(CONFIG)
+	node $(CONFIG) > $(JSON)
+
+json: $(JSON)
 
 .PHONY: build
 build: deps $(CONFIG)
@@ -44,13 +38,12 @@ ifdef WORKSPACE
 	jazzy -x -workspace,$(WORKSPACE),-scheme,$(NAME) \
 		--min-acl internal \
 		--author "Michael Nisi" \
-		--author_url https://troubled.pro
+		--author_url "https://troubled.pro"
 else
 	@echo "Which workspace?"
 endif
 
 .PHONY: clean
 clean:
-	rm $(CONFIG)
-	rm $(SCHEMA)
+	rm $(CONFIG) $(JSON)
 	rm -rf deps docs

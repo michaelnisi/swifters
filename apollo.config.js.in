@@ -1,0 +1,17 @@
+module.exports = {
+  client: {
+    includes: ["./Swifters/**/*.graphql"],
+    service: {
+      name: "github",
+      url: "https://api.github.com/graphql",
+      headers: {
+        authorization: "Bearer @@GITHUB_TOKEN@@"
+      }
+    }
+  }
+}
+
+if (module === require.main) {
+  let json = JSON.stringify(module.exports.client)
+  console.log(json)
+}

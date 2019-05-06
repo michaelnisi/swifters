@@ -10,18 +10,20 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 ## Objectives
 
-- Explore GraphQL building a modern application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview)
+- Explore GraphQL building a *modern* application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview)
 - Compare the imperative and procedural REST approach to the declarative GraphQL
 - Paginate with [UICollectionViewDataSourcePrefetching](https://developer.apple.com/documentation/uikit/uicollectionviewdatasourceprefetching)
 
 ## Dependencies
 
-- 💫 [Apollo](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
-- 🖼 [Nuke](https://github.com/kean/Nuke) – Image loading and caching
-- 🔗 [Ola](https://github.com/michaelnisi/ola) – Check reachability of host
-- 🦀 [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
+- [Apollo iOS](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
+- [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
+- [Nuke](https://github.com/kean/Nuke) – Image loading and caching
+- [Ola](https://github.com/michaelnisi/ola) – Check reachability of host
 
 ## Installation
+
+### Accessing GitHub
 
 Swifters needs a personal access token to communicate with [GitHub’s GraphQL server](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql).
 
@@ -30,7 +32,7 @@ These scopes are required:
 - `read:user`
 - `user:email`
 
-### Building with your token
+### Preparing the Workspace
 
 ```
 $ GITHUB_TOKEN=<token> make
@@ -39,32 +41,35 @@ $ GITHUB_TOKEN=<token> make
 #### What this does
 
 - Clone repositories of framework dependencies into `./deps`
-- Download the GitHub API schema to `./Swifters/schema.json`
-- Install your token in `./Swifters/config.json` for runtime access
-- Build the Swifters Xcode scheme (for validation)
+- Generate `./apollo.config.js` with your GitHub token
+- Copy `./apollo.config.js` to `./Swifters/github/apollo.config.json`
 
-#### Expected output
-
-Unless you have selected a team, the last step will fail, but leave you set for running the app in a simulator. If you plan to run Swifters on a decice, just select a development team in the project editor of the Swifters target for signing.
-
-### Running the app
+## Running the app
 
 ```
 $ open Swifters.xcworkspace
 ```
 
 - Select Swifters scheme
-- Run ⌘R 🙌
+- Run ⌘R 
 
-### Node.js
+🙌
 
-The code generation build step uses [Apollo CLI](https://github.com/apollographql/apollo-tooling), thus Xcode needs access to the Node toolchain for the build to succeed. If you’re having issues with Xcode not finding Node, try:
+## Onwards
+
+If you want to modify GraphQL queries to develop this app further, you need code generation tooling. [Apollo GraphQL](https://www.apollographql.com) tools are written in [TypeScript](https://www.typescriptlang.org) and run on [Node.js](https://nodejs.org).
+
+### Apollo CLI
 
 ```
-ln -s $(which node) /usr/local/bin/node
+$ npm i -g apollo
 ```
 
-You might have to do the same for npm and npx.
+### Generating Swift files from GraphQL queries
+
+```
+$ apollo client:codegen --target=swift ./Swifters/github
+```
 
 ## License
 
