@@ -16,9 +16,6 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 ## Dependencies
 
-- [Node.js](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine
-- [Apollo CLI](https://github.com/apollographql/apollo-tooling) – Tooling for development and production Apollo workflows
-
 - [Apollo iOS](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
 - [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
 - [Nuke](https://github.com/kean/Nuke) – Image loading and caching
@@ -57,6 +54,8 @@ $ open Swifters.xcworkspace
 - Run ⌘R 🙌
 
 ## Onwards
+
+If you want to modify GraphQL queries to develop this app further, you need code generation tooling. Apollo GraphQL tools are written in [TypeScript](https://www.typescriptlang.org) and run on [Node.js](https://nodejs.org), a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
 ### Apollo CLI
 
