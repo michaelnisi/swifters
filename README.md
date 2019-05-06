@@ -50,7 +50,7 @@ $ GITHUB_TOKEN=<token> make
 #### What this does
 
 - Clone repositories of framework dependencies into `./deps`
-- Generate `./apollo.config.js`
+- Generate `./apollo.config.js` with your GitHub token
 - Copy `./apollo.config.js` to `./Swifters/github/apollo.config.json`
 
 ## Running the app
