@@ -16,12 +16,23 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 ## Dependencies
 
-- 💫 [Apollo](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
-- 🖼 [Nuke](https://github.com/kean/Nuke) – Image loading and caching
-- 🔗 [Ola](https://github.com/michaelnisi/ola) – Check reachability of host
-- 🦀 [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
+- [Node.js](https://nodejs.org) - JavaScript runtime built on Chrome's V8 JavaScript engine
+- [Apollo CLI](https://github.com/apollographql/apollo-tooling) – Tooling for development and production Apollo workflows
+
+- [Apollo iOS](https://github.com/apollographql/apollo-ios) – A strongly-typed, caching GraphQL client
+- [DeepDiff](https://github.com/onmyway133/DeepDiff) – Amazingly incredible extraordinary lightning fast diffing
+- [Nuke](https://github.com/kean/Nuke) – Image loading and caching
+- [Ola](https://github.com/michaelnisi/ola) – Check reachability of host
 
 ## Installation
+
+### Apollo CLI
+
+```
+$ npm i -g apollo
+```
+
+### Accessing GitHub
 
 Swifters needs a personal access token to communicate with [GitHub’s GraphQL server](https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql).
 
@@ -40,22 +51,9 @@ $ GITHUB_TOKEN=<token> make
 
 - Clone repositories of framework dependencies into `./deps`
 - Generate `./apollo.config.js`
-- Copy `./apollo.config.js` to `./Swifters/github/apollo.config.json` 
-- Build the Swifters Xcode scheme (for validation)
+- Copy `./apollo.config.js` to `./Swifters/github/apollo.config.json`
 
-#### Expected output
-
-Unless you have selected a team, the last step will fail, but leave you set for running the app in a simulator. If you plan to run Swifters on a decice, just select a development team in the project editor of the Swifters target for signing.
-
-#### Manual Code Generation
-
-Generating Swift files from queries.
-
-```
-$ ${HOME}/node/apollo-tooling/packages/apollo/bin/run client:codegen --target=swift ./Swifters/github
-````
-
-### Running the app
+## Running the app
 
 ```
 $ open Swifters.xcworkspace
@@ -64,15 +62,13 @@ $ open Swifters.xcworkspace
 - Select Swifters scheme
 - Run ⌘R 🙌
 
-### Node.js
+## Onwards
 
-The code generation build step uses [Apollo CLI](https://github.com/apollographql/apollo-tooling), thus Xcode needs access to the Node toolchain for the build to succeed. If you’re having issues with Xcode not finding Node, try:
+### Generating Swift files from GraphQL queries
 
 ```
-ln -s $(which node) /usr/local/bin/node
+$ apollo client:codegen --target=swift ./Swifters/github
 ```
-
-You might have to do the same for npm and npx.
 
 ## License
 
