@@ -55,7 +55,7 @@ $ open Swifters.xcworkspace
 
 ## Onwards
 
-If you want to modify GraphQL queries to develop this app further, you need code generation tooling. Apollo GraphQL tools are written in [TypeScript](https://www.typescriptlang.org) and run on [Node.js](https://nodejs.org), a JavaScript runtime built on Chrome's V8 JavaScript engine.
+If you want to modify GraphQL queries to develop this app further, you need code generation tooling. [Apollo GraphQL](https://www.apollographql.com) tools are written in [TypeScript](https://www.typescriptlang.org) and run on [Node.js](https://nodejs.org), a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
 ### Apollo CLI
 
