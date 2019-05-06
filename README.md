@@ -67,7 +67,7 @@ $ npm i -g apollo
 
 ### Generating Swift files from GraphQL queries
 
-After you have adjusted `*.graphql` queries to your needs, you must generate the GraphQL related Swift source files. Apollo recommends adding a Run Script Phase to your Xcode target, but I find using the command line interface directly less opaque.
+After you have adjusted `*.graphql` queries to your needs, you must generate the GraphQL related Swift source files. Apollo recommends adding a [Run Script Phase](https://www.apollographql.com/docs/ios/installation#adding-build-step) to your Xcode target, but I find using the command line interface directly less opaque.
 
 ```
 $ apollo client:codegen --target=swift ./Swifters/github
