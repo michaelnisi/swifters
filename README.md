@@ -53,7 +53,7 @@ $ open Swifters.xcworkspace
 - Select Swifters scheme
 - Run ⌘R 
 
-🙌
+🙌🙌
 
 ## Onwards
 
