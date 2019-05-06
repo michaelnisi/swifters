@@ -10,7 +10,7 @@ Swifters progressively populates its [cache](https://www.apollographql.com/docs/
 
 ## Objectives
 
-- Explore GraphQL building a modern application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview)
+- Explore GraphQL building a *modern* application with Apollo and [UICollectionView](https://developer.apple.com/documentation/uikit/uicollectionview)
 - Compare the imperative and procedural REST approach to the declarative GraphQL
 - Paginate with [UICollectionViewDataSourcePrefetching](https://developer.apple.com/documentation/uikit/uicollectionviewdatasourceprefetching)
 
